@@ -317,7 +317,231 @@
 </div>
 
 ---
+# 6. Registry Ingestion Dashboard
 
+**Purpose:** Monitor and manage all data sources and ingestion health.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">🔄</span>Ingestion</span>
+        <span style="font-size:1.3em;">⚙️</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Data Sources</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Source</th><th>Status</th><th>Last Sync</th><th>Errors</th><th>Action</th></tr>
+                <tr><td>Verra Registry</td><td style="color:#059669;">Healthy</td><td>2 min ago</td><td>0</td><td><button style="background:#38bdf8; color:#fff; border:none; border-radius:5px; padding:4px 12px;">Re-ingest</button></td></tr>
+                <tr><td>Gold Standard</td><td style="color:#059669;">Healthy</td><td>5 min ago</td><td>0</td><td><button style="background:#38bdf8; color:#fff; border:none; border-radius:5px; padding:4px 12px;">Re-ingest</button></td></tr>
+                <tr><td>GIS Layers</td><td style="color:#f59e0b;">Warning</td><td>10 min ago</td><td>2</td><td><button style="background:#be123c; color:#fff; border:none; border-radius:5px; padding:4px 12px;">View Log</button></td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Source Health | Error Log | Manual Trigger
+    </footer>
+</div>
+
+# 7. AI Interpretation Results
+
+**Purpose:** Show extracted metrics and document insights.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">🤖</span>AI Insights</span>
+        <span style="font-size:1.3em;">📄</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Extracted Metrics</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Metric</th><th>Result</th><th>Confidence</th></tr>
+                <tr><td>Project area</td><td>14,200 ha</td><td>High</td></tr>
+                <tr><td>Leakage risk</td><td>Medium</td><td>Medium</td></tr>
+                <tr><td>NDVI trend</td><td>Positive</td><td>High</td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Document Viewer | Manual Correction
+    </footer>
+</div>
+
+# 8. Integrity Detection Center
+
+**Purpose:** Visualize overlap, anomalies, and risk flags.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">🛡️</span>Integrity</span>
+        <span style="font-size:1.3em;">🗺️</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Flagged Projects</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Project</th><th>Flag</th><th>Details</th></tr>
+                <tr><td>Forest A</td><td style="color:#be123c;">Overlap</td><td>Polygon conflict with Project B</td></tr>
+                <tr><td>Wetland X</td><td style="color:#f59e0b;">Dormant</td><td>No activity 18 months</td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Map Viewer | Flag Details
+    </footer>
+</div>
+
+# 9. Dynamic Risk Scoring Overview
+
+**Purpose:** Show all projects with risk/integrity scores.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">📊</span>Risk Scores</span>
+        <span style="font-size:1.3em;">🔎</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Project Risk Scores</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Project</th><th>Transparency</th><th>Permanence</th><th>Delivery</th><th>Monitoring</th><th>Financial</th></tr>
+                <tr><td>Forest A</td><td>8.5</td><td>7.2</td><td>6.9</td><td>8.0</td><td>7.5</td></tr>
+                <tr><td>Wetland X</td><td>6.0</td><td>5.5</td><td>4.2</td><td>6.8</td><td>5.9</td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Score Breakdown | Trends
+    </footer>
+</div>
+
+# 10. Liquidity & Market Signals
+
+**Purpose:** Show liquidity signals, market alerts, and trading activity.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">💡</span>Liquidity</span>
+        <span style="font-size:1.3em;">📈</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Market Alerts</div>
+            <ul style="padding-left:20px;">
+                <li>⚠️ Project Forest A: Sudden drop in trading volume</li>
+                <li>🔔 Wetland X: New buyer interest detected</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Alerts Feed | Heatmap | Watchlist
+    </footer>
+</div>
+
+# 11. Automated Due Diligence Summary
+
+**Purpose:** Auto-generated summary for each project.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">📝</span>Due Diligence</span>
+        <span style="font-size:1.3em;">🔍</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Summary</div>
+            <ul style="padding-left:20px;">
+                <li>Key Risks: Overlap, Dormancy</li>
+                <li>Integrity Score: 7.8</li>
+                <li>Issuance/Retirement: 400k/40k</li>
+                <li>AI Narrative: "Project shows strong NDVI trend but has delayed monitoring cycles."</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Download | Share | Audit Trail
+    </footer>
+</div>
+
+# 12. Predictive Failure & MRV Companion
+
+**Purpose:** Predict project collapse, missing data, and audit risks.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">⚠️</span>Predictive</span>
+        <span style="font-size:1.3em;">🧠</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Predictions & Checklist</div>
+            <ul style="padding-left:20px;">
+                <li>🔥 Fire risk: Elevated</li>
+                <li>📉 Drought stress: Moderate</li>
+                <li>🕒 Missing data: Monitoring overdue</li>
+                <li>📝 Auditor note: "Check buffer adequacy."</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Prediction Dashboard | Checklist | Actions
+    </footer>
+</div>
+
+# 13. Pricing Engine & SDG/Biodiversity Overlay
+
+**Purpose:** Show dynamic pricing, SDG, and biodiversity value.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">💸</span>Pricing</span>
+        <span style="font-size:1.3em;">🌱</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Price Breakdown</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Factor</th><th>Value</th></tr>
+                <tr><td>Integrity</td><td>High</td></tr>
+                <tr><td>Liquidity</td><td>Medium</td></tr>
+                <tr><td>SDG</td><td><span style="background:#059669; color:#fff; border-radius:4px; padding:2px 8px;">SDG 13</span></td></tr>
+                <tr><td>Biodiversity</td><td>Strong</td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        SDG Badges | Biodiversity | Price History
+    </footer>
+</div>
+
+# 14. Portfolio Monitoring
+
+**Purpose:** Monitor project portfolios for buyers/banks.
+
+<div style="border:1px solid #b6d0e2; border-radius:18px; overflow:hidden; max-width:760px; margin:auto; font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f9f9f9 80%,#e0f2fe 100%); box-shadow:0 8px 32px 0 rgba(34,60,80,0.12);">
+    <div style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:700; font-size:1.3em; letter-spacing:0.5px; display:flex; align-items:center;"><span style="background:#fff2; border-radius:50%; padding:6px 12px; margin-right:12px; font-size:1.3em;">📁</span>Portfolio</span>
+        <span style="font-size:1.3em;">🏦</span>
+    </div>
+    <div style="padding:32px; background:linear-gradient(90deg,#e9f5ee 80%,#f0f9ff 100%);">
+        <div style="background:#fff; border-radius:12px; padding:24px 20px; box-shadow:0 1px 4px 0 rgba(34,60,80,0.06); border:1.5px solid #e0e7ef;">
+            <div style="font-weight:600; margin-bottom:10px; color:#2563eb;">Portfolio Overview</div>
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#f0f0f0; font-weight:600;"><th>Project</th><th>Risk</th><th>Alerts</th><th>Performance</th></tr>
+                <tr><td>Forest A</td><td>Medium</td><td>1</td><td>Stable</td></tr>
+                <tr><td>Wetland X</td><td>High</td><td>2</td><td>Declining</td></tr>
+            </table>
+        </div>
+    </div>
+    <footer style="background:linear-gradient(90deg,#2563eb 60%,#38bdf8 100%); color:#fff; padding:14px 32px; text-align:center; font-size:1em; letter-spacing:0.2px; box-shadow:0 -2px 8px 0 rgba(34,60,80,0.08);">
+        Risk Summary | Diversification | Trends
+    </footer>
+</div>
+
+
+/***/
+hier de user wiuer frames zetten zoadt die schermen er ook in zitten
+/***/
 ---
 
 ## 7. Theme Toggle & Accessibility

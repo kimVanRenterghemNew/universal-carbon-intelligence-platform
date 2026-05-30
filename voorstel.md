@@ -1,3 +1,55 @@
+# Wireframes (Ordered User Flow)
+
+## 1. Registration & Login
+
+- **Registration Screen**: Name, Email, Add FIDO Security Key (WebAuthn prompt), up to 5 keys, show list of keys, remove key, error if >5
+- **Login Screen**: Email, FIDO authentication prompt
+
+## 2. User Dashboard
+
+- Overview of user’s data, quick links to main features
+
+## 3. User Profile / Settings
+
+- View/update profile info
+- Manage FIDO keys (add, remove, set default)
+- View assigned rights/roles (badges/table)
+- Request additional rights (button, dialog for right + reason)
+
+## 4. Rights Request Flow
+
+- User selects right to request, enters reason
+- Confirmation and status of request
+
+## 5. Admin User Management
+
+- List/search users
+- View user details (profile, registered keys, assigned rights)
+- Assign/revoke rights (rights matrix: users x rights, checkboxes)
+- See and approve/deny pending rights requests
+- Disable/delete users
+- Audit log for rights changes
+
+## 6. Core Application Screens
+
+- Registry Ingestion
+- AI Insights
+- Integrity Detection
+- Risk Scoring
+- Liquidity
+- Due Diligence
+- Predictive Failure
+- Pricing/SDG
+- Portfolio Monitoring
+
+## 7. Accessibility & UX Notes
+
+- All screens: clear focus indicators, keyboard navigation, WCAG AA color contrast
+- All actions accessible via keyboard and screen reader
+- Consistent layout, spacing, and component styles
+
+---
+**Note:** All wireframes follow the modern UI system, with consistent design tokens, spacing, and responsive layouts. User management and rights assignment/request are fully integrated into the user and admin flows.
 Core Concept
 Working Idea
 A universal carbon intelligence platform that:
