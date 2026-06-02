@@ -34,23 +34,23 @@
     }
 
     .page {
-      width: min(1320px, calc(100% - 48px));
+      width: min(1320px, calc(100% - 24px));
       margin: 0 auto;
-      padding: 36px 0 96px;
+      padding: 16px 0 72px;
     }
 
     .hero {
-      padding: 28px 32px;
+      padding: 22px 18px;
       border-radius: 32px;
       background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(231, 244, 241, 0.96));
       border: 1px solid rgba(216, 224, 235, 0.9);
       box-shadow: var(--shadow);
-      margin-bottom: 30px;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
       margin: 0 0 8px;
-      font-size: 2.1rem;
+      font-size: clamp(1.7rem, 5vw, 2.1rem);
       letter-spacing: -0.02em;
     }
 
@@ -92,17 +92,23 @@
 
     .shell {
       display: grid;
-      grid-template-columns: 240px 1fr;
-      min-height: 760px;
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .shell > *,
+    .sidebar > *,
+    .topbar > * {
+      min-width: 0;
     }
 
     .sidebar {
       background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
       color: rgba(255,255,255,0.9);
-      padding: 24px 18px;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 22px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .logo {
@@ -122,15 +128,20 @@
     }
 
     .menu {
-      display: grid;
+      display: flex;
       gap: 8px;
+      overflow-x: auto;
       align-content: start;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
     }
 
     .menu-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex: 0 0 auto;
+      min-width: max-content;
       padding: 12px 14px;
       border-radius: 14px;
       color: rgba(255,255,255,0.8);
@@ -144,10 +155,26 @@
     }
 
     .main {
-      padding: 22px;
+      padding: 16px;
       background:
         radial-gradient(circle at top right, rgba(219, 234, 254, 0.8), transparent 24%),
         linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,247,251,0.98));
+    }
+
+    .headline,
+    .btn-row,
+    .tabs,
+    .chips {
+      min-width: 0;
+    }
+
+    .headline {
+      flex: 1 1 100%;
+    }
+
+    .headline h3,
+    .headline p {
+      overflow-wrap: anywhere;
     }
 
     .topbar {
@@ -180,6 +207,10 @@
       align-items: center;
     }
 
+    .btn-row {
+      width: 100%;
+    }
+
     .search,
     .chip,
     .tab,
@@ -195,7 +226,8 @@
     }
 
     .search {
-      min-width: 240px;
+      width: 100%;
+      min-width: 0;
       padding: 12px 16px;
       background: rgba(255,255,255,0.96);
       border: 1px solid rgba(216,224,235,0.92);
@@ -250,13 +282,10 @@
     .mini-grid {
       display: grid;
       gap: 14px;
+      grid-template-columns: 1fr;
     }
 
-    .stats { grid-template-columns: repeat(4, 1fr); margin-bottom: 18px; }
-    .cards { grid-template-columns: repeat(2, 1fr); }
-    .layout { grid-template-columns: 1.7fr 1fr; }
-    .split { grid-template-columns: 1.6fr 1fr; }
-    .mini-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats { margin-bottom: 18px; }
 
     .stat,
     .panel,
@@ -297,6 +326,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 10px;
       padding: 12px 14px;
       background: rgba(248,250,252,0.95);
@@ -305,6 +335,7 @@
 
     .table {
       width: 100%;
+      min-width: 640px;
       border-collapse: collapse;
     }
 
@@ -345,14 +376,81 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 1024px) {
-      .shell,
-      .layout,
-      .cards,
-      .split,
+    .panel,
+    .mini,
+    .alert {
+      overflow-x: auto;
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        width: min(1320px, calc(100% - 40px));
+        padding-top: 28px;
+      }
+
+      .hero {
+        padding: 28px 26px;
+        margin-bottom: 28px;
+      }
+
+      .main {
+        padding: 22px;
+      }
+
       .stats,
+      .cards,
       .mini-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .shell {
+        grid-template-columns: 240px minmax(0, 1fr);
+        min-height: 760px;
+      }
+
+      .sidebar {
+        padding: 24px 18px;
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 22px;
+      }
+
+      .menu {
+        display: grid;
+        overflow: visible;
+        padding-bottom: 0;
+      }
+
+      .menu-item {
+        min-width: 0;
+      }
+
+      .search {
+        width: auto;
+        min-width: 240px;
+      }
+
+      .headline,
+      .btn-row {
+        flex: 0 1 auto;
+      }
+
+      .btn-row {
+        width: auto;
+      }
+
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr); }
+      .split { grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); }
+    }
+
+    @media (min-width: 1200px) {
+      .page {
+        width: min(1320px, calc(100% - 48px));
+        padding: 36px 0 96px;
       }
     }
   </style>
@@ -361,7 +459,7 @@
   <div class="page">
     <section class="hero">
       <h1>Universal Carbon Intelligence Platform</h1>
-      <p>Desktop handoff wireframes aligned to a daisyUI-style app shell. These stay intentionally full-screen because the complete application framing is useful for design, product, and engineering handoff.</p>
+      <p>Responsive handoff wireframes aligned to a daisyUI-style app shell. Every screen now starts from a narrow viewport, then expands into the full application frame at larger breakpoints for design, product, and engineering handoff.</p>
     </section>
 
     <section class="screen" id="screen-01">

@@ -35,26 +35,26 @@
     }
 
     .page {
-      width: min(1280px, calc(100% - 40px));
+      width: min(1280px, calc(100% - 20px));
       margin: 0 auto;
-      padding: 28px 0 80px;
+      padding: 18px 0 64px;
     }
 
     .hero {
-      padding: 24px 28px;
+      padding: 20px 16px;
       border-radius: 30px;
       background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232,245,241,0.96));
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
-    .hero h1 { margin: 0 0 8px; font-size: 2rem; }
+    .hero h1 { margin: 0 0 8px; font-size: clamp(1.55rem, 5vw, 2rem); }
     .hero p { margin: 0; color: var(--muted); line-height: 1.6; max-width: 860px; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 22px;
     }
 
@@ -70,18 +70,18 @@
     .screen-title p { margin: 0; color: var(--muted); }
 
     .phone {
-      width: 390px;
+      width: min(100%, 390px);
       margin: 0 auto;
       border-radius: 34px;
-      padding: 14px;
+      padding: 10px;
       background: #0f172a;
       box-shadow: var(--shadow);
     }
 
     .frame {
-      min-height: 820px;
+      min-height: 760px;
       border-radius: 26px;
-      padding: 18px;
+      padding: 16px;
       background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,248,252,0.98));
       border: 1px solid rgba(255,255,255,0.15);
     }
@@ -91,9 +91,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      flex-wrap: wrap;
       margin-bottom: 18px;
     }
 
+    .title { min-width: 0; }
     .title strong { display: block; font-size: 1.05rem; }
     .title span { color: var(--muted); font-size: 0.84rem; }
 
@@ -131,7 +133,7 @@
       gap: 12px;
     }
 
-    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: 1fr; }
 
     .card {
       padding: 14px;
@@ -146,6 +148,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 10px;
       padding: 12px 13px;
       background: rgba(247, 250, 253, 0.98);
@@ -153,6 +156,11 @@
     }
 
     .muted { color: var(--muted); }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+    }
 
     .chart {
       min-height: 140px;
@@ -169,15 +177,30 @@
 
     .nav {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
       margin-top: 16px;
     }
 
     .nav .pill { width: 100%; }
 
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: 1fr; }
+    @media (min-width: 560px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 980px) {
+      .page {
+        width: min(1280px, calc(100% - 40px));
+        padding-top: 28px;
+      }
+
+      .hero {
+        padding: 24px 28px;
+        margin-bottom: 28px;
+      }
+
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
@@ -185,33 +208,108 @@
   <div class="page">
     <section class="hero">
       <h1>Universal Carbon Intelligence Platform — Mobile</h1>
-      <p>Dedicated mobile wireframes for summary, alerts, diligence review, and passkey onboarding. These are not compressed desktop screens; they have their own hierarchy for phone usage.</p>
+      <p>Dedicated mobile counterparts for all twenty product screens. The gallery starts from the smallest phone width, simplifies dense desktop surfaces into queue-first cards and drill-in actions, and only expands into a two-column comparison layout on larger screens.</p>
     </section>
 
     <div class="grid">
       <section class="screen" id="mobile-screen-01">
-        <div class="screen-title"><h2>01. Mobile Dashboard Summary</h2><p>Quick daily posture for reviewers and executives.</p></div>
-        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Carbon OS</strong><span>Morning summary</span></div><div class="pill primary">Live</div></div><div class="stats"><div class="card"><small class="muted">Open flags</small><div style="font-size:1.5rem;font-weight:700;">27</div></div><div class="card"><small class="muted">Pending reviews</small><div style="font-size:1.5rem;font-weight:700;">6</div></div><div class="card"><small class="muted">Market alerts</small><div style="font-size:1.5rem;font-weight:700;">3</div></div><div class="card"><small class="muted">Portfolio risk</small><div style="font-size:1.5rem;font-weight:700;">Stable</div></div></div><div class="stack" style="margin-top:12px;"><div class="card"><h4>Top watch items</h4><div class="list"><div class="item"><span>Forest A overlap</span><span class="pill danger">High</span></div><div class="item"><span>Wetland X diligence</span><span class="pill warning">Due</span></div><div class="item"><span>Price signal shift</span><span class="pill info">New</span></div></div></div><div class="card"><h4>Next action</h4><div class="btn primary" style="width:100%;">Open Review Inbox</div></div></div><div class="nav"><div class="pill primary">Home</div><div class="pill">Alerts</div><div class="pill">Diligence</div><div class="pill">Profile</div></div></div></div>
+        <div class="screen-title"><h2>01. Mobile Dashboard Overview</h2><p>Daily posture, shortcuts, and watch items.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Carbon OS</strong><span>Morning summary</span></div><div class="pill primary">Live</div></div><div class="stats"><div class="card"><small class="muted">Tracked projects</small><div style="font-size:1.5rem;font-weight:700;">412</div></div><div class="card"><small class="muted">Open flags</small><div style="font-size:1.5rem;font-weight:700;">27</div></div><div class="card"><small class="muted">Healthy sources</small><div style="font-size:1.5rem;font-weight:700;">18/20</div></div><div class="card"><small class="muted">Exposure</small><div style="font-size:1.5rem;font-weight:700;">EUR 18.4M</div></div></div><div class="stack" style="margin-top:12px;"><div class="card"><h4>Top watch items</h4><div class="list"><div class="item"><span>Forest A overlap</span><span class="pill danger">High</span></div><div class="item"><span>Wetland X diligence</span><span class="pill warning">Due</span></div><div class="item"><span>Price signal shift</span><span class="pill info">New</span></div></div></div><div class="card"><h4>Quick action</h4><div class="btn primary" style="width:100%;">Open Review Inbox</div></div></div><div class="nav"><div class="pill primary">Home</div><div class="pill">Sources</div><div class="pill">Alerts</div><div class="pill">Profile</div></div></div></div>
       </section>
 
       <section class="screen" id="mobile-screen-02">
-        <div class="screen-title"><h2>02. Mobile Alerts and Review Inbox</h2><p>Queue-first view for fast triage.</p></div>
-        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Review Inbox</strong><span>Prioritized by severity and due time</span></div><div class="pill warning">12</div></div><div class="card"><h4>Pending now</h4><div class="list"><div class="item"><span>Claim approval for Jane Doe</span><span class="pill info">Access</span></div><div class="item"><span>Forest A overlap evidence</span><span class="pill danger">Integrity</span></div><div class="item"><span>Diligence export ready</span><span class="pill success">Ready</span></div><div class="item"><span>Passkey recovery request</span><span class="pill warning">Security</span></div></div></div><div class="card"><h4>Filters</h4><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="pill primary">All</div><div class="pill">Integrity</div><div class="pill">Claims</div><div class="pill">Diligence</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Alerts</div><div class="pill">Diligence</div><div class="pill">Profile</div></div></div></div>
+        <div class="screen-title"><h2>02. Mobile Data Ingestion and Upload</h2><p>Queue-first intake instead of a full desktop console.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Data Intake</strong><span>Upload, validate, and queue</span></div><div class="pill info">7 queued</div></div><div class="card"><h4>Dropzone status</h4><div class="chart">Tap to upload CSV, GeoJSON, PDF, DOCX, XLSX, or imagery manifests.</div></div><div class="card"><h4>Queue now</h4><div class="list"><div class="item"><span>verra-projects.csv</span><span class="pill success">Done</span></div><div class="item"><span>monitoring-report.pdf</span><span class="pill warning">Running</span></div><div class="item"><span>gis-layer.zip</span><span class="pill danger">Error</span></div></div></div><div class="card"><h4>Next action</h4><div class="actions"><div class="btn primary" style="width:100%;">Upload Source</div><div class="btn" style="width:100%;">Review Errors</div></div></div><div class="nav"><div class="pill primary">Upload</div><div class="pill">Queue</div><div class="pill">Errors</div><div class="pill">Profile</div></div></div></div>
       </section>
 
       <section class="screen" id="mobile-screen-03">
-        <div class="screen-title"><h2>03. Mobile Project Snapshot</h2><p>Single-project summary without the full analyst shell.</p></div>
-        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Forest A</strong><span>ARR project snapshot</span></div><div class="pill warning">Medium risk</div></div><div class="card"><h4>Project summary</h4><div class="list"><div class="item"><span>Integrity score</span><strong>7.6</strong></div><div class="item"><span>Registry</span><strong>Verra</strong></div><div class="item"><span>Area</span><strong>14,200 ha</strong></div><div class="item"><span>Market signal</span><strong>Buy interest</strong></div></div></div><div class="card"><h4>Current issues</h4><div class="list"><div class="item"><span>Overlap watch</span><span class="pill danger">Open</span></div><div class="item"><span>Monitoring delay</span><span class="pill warning">Review</span></div></div></div><div class="card"><h4>Evidence snapshot</h4><div class="chart">Mini evidence preview, last update timeline, and quick link to the desktop review flow</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Project</div><div class="pill">Alerts</div><div class="pill">Profile</div></div></div></div>
+        <div class="screen-title"><h2>03. Mobile Geospatial Map and Analysis</h2><p>Region summary and map drill-in for phone usage.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Geo Analysis</strong><span>Latin America ARR cluster</span></div><div class="pill primary">Map</div></div><div class="card"><h4>Map focus</h4><div class="chart">Compact map tile with project polygon, overlap hotspot, and NDVI toggle summary.</div></div><div class="card"><h4>Selected project</h4><div class="list"><div class="item"><span>Forest A</span><span class="pill warning">Medium</span></div><div class="item"><span>Registry</span><strong>Verra</strong></div><div class="item"><span>Area</span><strong>14,200 ha</strong></div></div></div><div class="card"><h4>Active layers</h4><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="pill primary">Projects</div><div class="pill">Flags</div><div class="pill">NDVI</div><div class="pill">Footprints</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Map</div><div class="pill">Layers</div><div class="pill">Alerts</div></div></div></div>
       </section>
 
       <section class="screen" id="mobile-screen-04">
-        <div class="screen-title"><h2>04. Mobile Due Diligence Summary</h2><p>Compact decision screen for on-the-go review.</p></div>
-        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Diligence Summary</strong><span>Wetland X</span></div><div class="pill info">Share</div></div><div class="card"><h4>Decision</h4><div style="font-size:1.2rem;font-weight:700;margin-bottom:8px;">Proceed with caution</div><div class="muted">Strong signal quality, but unresolved overlap evidence and delayed monitoring reduce confidence.</div></div><div class="card"><h4>Core facts</h4><div class="list"><div class="item"><span>Integrity score</span><strong>7.8</strong></div><div class="item"><span>Missing data</span><span class="pill warning">2 items</span></div><div class="item"><span>Open flags</span><span class="pill danger">2</span></div></div></div><div class="card"><h4>Next action</h4><div class="btn primary" style="width:100%;">Request Full Review</div></div><div class="nav"><div class="pill">Home</div><div class="pill">Alerts</div><div class="pill primary">Diligence</div><div class="pill">Profile</div></div></div></div>
+        <div class="screen-title"><h2>04. Mobile Document Extraction and AI Insights</h2><p>Review findings and extracted fields in a narrow workflow.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>AI Review</strong><span>Monitoring report v3</span></div><div class="pill success">Ready</div></div><div class="card"><h4>High-priority findings</h4><div class="list"><div class="item"><span>High CO2 reduction signal</span><span class="pill success">Finding</span></div><div class="item"><span>Buffer adequacy unclear</span><span class="pill warning">Warning</span></div><div class="item"><span>Upload fresher imagery</span><span class="pill info">Suggestion</span></div></div></div><div class="card"><h4>Extracted fields</h4><div class="list"><div class="item"><span>Project area</span><strong>14,200 ha</strong></div><div class="item"><span>Leakage risk</span><strong>Medium</strong></div><div class="item"><span>Validated fields</span><strong>14</strong></div></div></div><div class="card"><h4>Review action</h4><div class="btn primary" style="width:100%;">Open Source Trace</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Fields</div><div class="pill">Findings</div><div class="pill">Trace</div></div></div></div>
       </section>
 
       <section class="screen" id="mobile-screen-05">
-        <div class="screen-title"><h2>05. Mobile Passkey Onboarding</h2><p>Invite acceptance and passkey enrollment on a phone.</p></div>
-        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Join Green Capital</strong><span>Secure onboarding</span></div><div class="pill primary">Step 2</div></div><div class="card"><h4>Invite accepted</h4><div class="muted">Create a passkey on this device to finish setup. No password is required.</div></div><div class="card"><h4>What you get</h4><div class="list"><div class="item"><span>Workspace</span><strong>Analyst team</strong></div><div class="item"><span>Initial claims</span><strong>3 granted</strong></div><div class="item"><span>Recovery</span><strong>Backup device needed</strong></div></div></div><div class="card"><h4>Passkey enrollment</h4><div class="btn primary" style="width:100%;margin-bottom:10px;">Create Passkey</div><div class="btn" style="width:100%;">Use Security Key Instead</div></div><div class="nav"><div class="pill">Invite</div><div class="pill primary">Passkey</div><div class="pill">Claims</div><div class="pill">Done</div></div></div></div>
+        <div class="screen-title"><h2>05. Mobile Market and Trading View</h2><p>Price pulse, watchlist, and trade signals on one phone screen.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Market Desk</strong><span>Nature-based spot market</span></div><div class="pill primary">Live</div></div><div class="stats"><div class="card"><small class="muted">Avg price</small><div style="font-size:1.5rem;font-weight:700;">EUR 24.8</div></div><div class="card"><small class="muted">Daily volume</small><div style="font-size:1.5rem;font-weight:700;">10.4k</div></div></div><div class="card"><h4>Trading ladder</h4><div class="list"><div class="item"><span>Forest A</span><span class="pill success">Buy</span></div><div class="item"><span>Blue Delta</span><span class="pill warning">Watch</span></div><div class="item"><span>Highland ARR</span><span class="pill success">Buy</span></div></div></div><div class="card"><h4>Next action</h4><div class="actions"><div class="btn primary" style="width:100%;">Create Watchlist</div><div class="btn" style="width:100%;">Export Snapshot</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Market</div><div class="pill">Signals</div><div class="pill">Deals</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-06">
+        <div class="screen-title"><h2>06. Mobile User Profile and Settings</h2><p>Profile, theme, and integration controls sized for a phone.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Profile</strong><span>Analyst workspace settings</span></div><div class="pill info">User</div></div><div class="card"><h4>Profile</h4><div class="list"><div class="item"><span>Name</span><strong>Jane Doe</strong></div><div class="item"><span>Organisation</span><strong>Green Capital</strong></div><div class="item"><span>Email</span><strong>jane@carbon.io</strong></div></div></div><div class="card"><h4>Theme and accessibility</h4><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="pill primary">Corporate Light</div><div class="pill">High Contrast</div><div class="pill">Comfort Scale</div></div></div><div class="card"><h4>Integrations</h4><div class="list"><div class="item"><span>Registry link</span><span class="pill success">Connected</span></div><div class="item"><span>Webhook</span><span class="pill info">Configured</span></div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Profile</div><div class="pill">Access</div><div class="pill">Integrations</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-07">
+        <div class="screen-title"><h2>07. Mobile Registry Ingestion Dashboard</h2><p>Connector health compressed into status cards and retry actions.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Source Health</strong><span>Registry connectors</span></div><div class="pill warning">3 issues</div></div><div class="stats"><div class="card"><small class="muted">Healthy</small><div style="font-size:1.5rem;font-weight:700;">18</div></div><div class="card"><small class="muted">Failed runs</small><div style="font-size:1.5rem;font-weight:700;">1</div></div></div><div class="card"><h4>Connector status</h4><div class="list"><div class="item"><span>Verra</span><span class="pill success">Healthy</span></div><div class="item"><span>Gold Standard</span><span class="pill success">Healthy</span></div><div class="item"><span>GIS Sync</span><span class="pill danger">Retry</span></div></div></div><div class="card"><h4>Action</h4><div class="actions"><div class="btn primary" style="width:100%;">Trigger Re-sync</div><div class="btn" style="width:100%;">Download Log</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Health</div><div class="pill">Retries</div><div class="pill">Logs</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-08">
+        <div class="screen-title"><h2>08. Mobile AI Interpretation Results</h2><p>Explainable extracted metrics with concise confidence cues.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Interpretation</strong><span>Structured extraction v2</span></div><div class="pill success">High</div></div><div class="card"><h4>Metric snapshot</h4><div class="list"><div class="item"><span>Project area</span><strong>14,200 ha</strong></div><div class="item"><span>Leakage risk</span><span class="pill warning">Medium</span></div><div class="item"><span>NDVI trend</span><span class="pill success">Positive</span></div></div></div><div class="card"><h4>Narrative</h4><div class="muted">Project performance appears stable, with positive vegetation signal and moderate leakage watchpoints.</div></div><div class="card"><h4>Analyst note</h4><div class="btn primary" style="width:100%;">Open Trace</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Metrics</div><div class="pill">Narrative</div><div class="pill">Trace</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-09">
+        <div class="screen-title"><h2>09. Mobile Integrity Detection Center</h2><p>High-risk queue distilled into a mobile triage list.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Integrity Queue</strong><span>Highest severity first</span></div><div class="pill danger">27</div></div><div class="stats"><div class="card"><small class="muted">High severity</small><div style="font-size:1.5rem;font-weight:700;">8</div></div><div class="card"><small class="muted">Dormancy cases</small><div style="font-size:1.5rem;font-weight:700;">5</div></div></div><div class="card"><h4>Pending now</h4><div class="list"><div class="item"><span>Forest A overlap</span><span class="pill danger">High</span></div><div class="item"><span>Wetland X dormancy</span><span class="pill warning">Medium</span></div><div class="item"><span>Delta issuance anomaly</span><span class="pill warning">Queued</span></div></div></div><div class="card"><h4>Action</h4><div class="btn primary" style="width:100%;">Create Review Batch</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Queue</div><div class="pill">Evidence</div><div class="pill">Resolved</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-10">
+        <div class="screen-title"><h2>10. Mobile Dynamic Risk Scoring Overview</h2><p>Score comparison becomes card-based on a phone.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Risk Lab</strong><span>Composite score snapshot</span></div><div class="pill info">Scores</div></div><div class="card"><h4>Top projects</h4><div class="list"><div class="item"><span>Forest A</span><strong>7.6</strong></div><div class="item"><span>Wetland X</span><strong>5.7</strong></div><div class="item"><span>Highland ARR</span><strong>8.2</strong></div></div></div><div class="card"><h4>Method note</h4><div class="muted">Every score links back to evidence, missing-data penalties, and the last update timestamp.</div></div><div class="card"><h4>Next action</h4><div class="btn primary" style="width:100%;">Compare Dimensions</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Scores</div><div class="pill">Trends</div><div class="pill">Compare</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-11">
+        <div class="screen-title"><h2>11. Mobile Liquidity and Market Signals</h2><p>Alert feed and watched assets without the desktop table.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Liquidity</strong><span>Buyer attention and tradability</span></div><div class="pill warning">9</div></div><div class="card"><h4>Live alerts</h4><div class="list"><div class="item"><span>Forest A volume dropped 32%</span><span class="pill warning">Alert</span></div><div class="item"><span>Wetland X gained buyer interest</span><span class="pill success">Positive</span></div><div class="item"><span>ARR spread widening</span><span class="pill danger">Review</span></div></div></div><div class="card"><h4>Watched assets</h4><div class="list"><div class="item"><span>Forest A</span><strong>Medium</strong></div><div class="item"><span>Wetland X</span><strong>Improving</strong></div><div class="item"><span>Highland ARR</span><strong>Strong</strong></div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Signals</div><div class="pill">Heatmap</div><div class="pill">Watchlist</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-12">
+        <div class="screen-title"><h2>12. Mobile Automated Due Diligence Summary</h2><p>Compact decision screen for on-the-go review.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Diligence Summary</strong><span>Wetland X</span></div><div class="pill info">Share</div></div><div class="card"><h4>Decision</h4><div style="font-size:1.2rem;font-weight:700;margin-bottom:8px;">Proceed with caution</div><div class="muted">Strong signal quality, but unresolved overlap evidence and delayed monitoring reduce confidence.</div></div><div class="card"><h4>Core facts</h4><div class="list"><div class="item"><span>Integrity score</span><strong>7.8</strong></div><div class="item"><span>Missing data</span><span class="pill warning">2 items</span></div><div class="item"><span>Open flags</span><span class="pill danger">2</span></div></div></div><div class="card"><h4>Next action</h4><div class="btn primary" style="width:100%;">Request Full Review</div></div><div class="nav"><div class="pill">Home</div><div class="pill">Alerts</div><div class="pill primary">Diligence</div><div class="pill">Profile</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-13">
+        <div class="screen-title"><h2>13. Mobile Predictive Failure and MRV Companion</h2><p>Risk forecast and remediation prompts for field review.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Predictive</strong><span>Delivery and MRV foresight</span></div><div class="pill warning">74%</div></div><div class="card"><h4>Predictions</h4><div class="list"><div class="item"><span>Fire risk</span><span class="pill danger">Elevated</span></div><div class="item"><span>Drought stress</span><span class="pill warning">Moderate</span></div><div class="item"><span>Underdelivery probability</span><span class="pill warning">Possible</span></div></div></div><div class="card"><h4>MRV checklist</h4><div class="list"><div class="item"><span>Monitoring overdue</span><span class="pill danger">Open</span></div><div class="item"><span>Buffer review</span><span class="pill warning">Needed</span></div><div class="item"><span>Satellite refresh</span><span class="pill info">Suggested</span></div></div></div><div class="card"><h4>Action</h4><div class="btn primary" style="width:100%;">Request Monitoring Pack</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Risk</div><div class="pill">Checklist</div><div class="pill">Actions</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-14">
+        <div class="screen-title"><h2>14. Mobile Pricing Engine and Impact Overlay</h2><p>Fair value and premium drivers simplified for phones.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Pricing</strong><span>Integrity plus impact</span></div><div class="pill primary">Live</div></div><div class="card"><h4>Suggested fair value</h4><div style="font-size:1.6rem;font-weight:700;">EUR 27.40</div><div class="muted">Premium driven by biodiversity and stable delivery outlook.</div></div><div class="card"><h4>Price factors</h4><div class="list"><div class="item"><span>Integrity</span><strong>+1.4</strong></div><div class="item"><span>Liquidity</span><strong>-0.3</strong></div><div class="item"><span>Biodiversity</span><strong>+0.9</strong></div></div></div><div class="card"><h4>Impact badges</h4><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="pill primary">SDG 13</div><div class="pill">SDG 15</div><div class="pill">Biodiversity+</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Price</div><div class="pill">Impact</div><div class="pill">History</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-15">
+        <div class="screen-title"><h2>15. Mobile Portfolio Monitoring</h2><p>Holdings, concentration, and alert posture in one stack.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Portfolio</strong><span>Green Capital buyer desk</span></div><div class="pill info">3 assets</div></div><div class="stats"><div class="card"><small class="muted">Avg score</small><div style="font-size:1.5rem;font-weight:700;">7.1</div></div><div class="card"><small class="muted">Open alerts</small><div style="font-size:1.5rem;font-weight:700;">3</div></div></div><div class="card"><h4>Holdings</h4><div class="list"><div class="item"><span>Forest A</span><strong>34%</strong></div><div class="item"><span>Wetland X</span><strong>18%</strong></div><div class="item"><span>Highland ARR</span><strong>48%</strong></div></div></div><div class="card"><h4>Diversification note</h4><div class="muted">Exposure remains concentrated in ARR. Add one wetland or blue carbon asset to reduce sector concentration.</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Portfolio</div><div class="pill">Risk</div><div class="pill">Reports</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-16">
+        <div class="screen-title"><h2>16. Mobile Passkey or FIDO Sign-In</h2><p>Passwordless sign-in optimized for device-first flow.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Welcome Back</strong><span>Green Capital Analyst Hub</span></div><div class="pill primary">FIDO</div></div><div class="card"><h4>Account lookup</h4><div class="list"><div class="item"><span>Email</span><strong>jane@carbon.io</strong></div><div class="item"><span>Workspace</span><strong>Analyst Team</strong></div><div class="item"><span>Last device</span><strong>Windows Hello</strong></div></div></div><div class="card"><h4>Available methods</h4><div class="list"><div class="item"><span>Passkey on this device</span><span class="pill success">Recommended</span></div><div class="item"><span>External FIDO key</span><span class="pill info">Available</span></div><div class="item"><span>Recovery review</span><span class="pill warning">Manual</span></div></div></div><div class="card"><h4>Continue</h4><div class="actions"><div class="btn primary" style="width:100%;">Continue with Passkey</div><div class="btn" style="width:100%;">Use Security Key</div></div></div><div class="nav"><div class="pill primary">Sign In</div><div class="pill">Devices</div><div class="pill">Recovery</div><div class="pill">Help</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-17">
+        <div class="screen-title"><h2>17. Mobile Workspace Onboarding</h2><p>Invite-led orientation before the first authenticated session.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Join Green Capital</strong><span>Workspace onboarding</span></div><div class="pill primary">Step 1</div></div><div class="card"><h4>Workspace overview</h4><div class="list"><div class="item"><span>Purpose</span><strong>Integrity and diligence</strong></div><div class="item"><span>Data sensitivity</span><span class="pill warning">Restricted</span></div><div class="item"><span>Primary modules</span><strong>Dashboard, Integrity, Diligence</strong></div></div></div><div class="card"><h4>Initial claims</h4><div class="list"><div class="item"><span>claim.ingestion.view</span><span class="pill success">Granted</span></div><div class="item"><span>claim.integrity.review</span><span class="pill success">Granted</span></div><div class="item"><span>claim.trading.execute</span><span class="pill">Not granted</span></div></div></div><div class="card"><h4>Action</h4><div class="btn primary" style="width:100%;">Accept Workspace</div></div><div class="nav"><div class="pill primary">Welcome</div><div class="pill">Claims</div><div class="pill">Prefs</div><div class="pill">Done</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-18">
+        <div class="screen-title"><h2>18. Mobile Claims Access Management</h2><p>Effective claims and sensitive permissions in a card stack.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Claims Access</strong><span>Workspace: Green Capital</span></div><div class="pill info">12</div></div><div class="stats"><div class="card"><small class="muted">Effective</small><div style="font-size:1.5rem;font-weight:700;">12</div></div><div class="card"><small class="muted">Sensitive</small><div style="font-size:1.5rem;font-weight:700;">3</div></div></div><div class="card"><h4>Claims matrix</h4><div class="list"><div class="item"><span>claim.ingestion.manage</span><span class="pill success">Granted</span></div><div class="item"><span>claim.ai.validate</span><span class="pill success">Granted</span></div><div class="item"><span>claim.trading.execute</span><span class="pill warning">Request</span></div></div></div><div class="card"><h4>Action</h4><div class="actions"><div class="btn primary" style="width:100%;">Grant Claims</div><div class="btn" style="width:100%;">Review Audit</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Access</div><div class="pill">Requests</div><div class="pill">Audit</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-19">
+        <div class="screen-title"><h2>19. Mobile Claim Request and Approval</h2><p>Business reason, approver checks, and strong-auth approval on one phone screen.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Claim Request</strong><span>Trading execute approval</span></div><div class="pill warning">Pending</div></div><div class="card"><h4>User request</h4><div class="list"><div class="item"><span>User</span><strong>Jane Doe</strong></div><div class="item"><span>Claim</span><strong>claim.trading.execute</strong></div><div class="item"><span>Reason</span><strong>Evaluate broker offers</strong></div></div></div><div class="card"><h4>Approver checks</h4><div class="list"><div class="item"><span>Manager approval</span><span class="pill success">Received</span></div><div class="item"><span>Step-up auth</span><span class="pill warning">Required</span></div><div class="item"><span>Policy conflict</span><span class="pill">None</span></div></div></div><div class="card"><h4>Actions</h4><div class="actions"><div class="btn primary" style="width:100%;">Approve with Passkey</div><div class="btn" style="width:100%;">Deny with Comment</div></div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Pending</div><div class="pill">Approved</div><div class="pill">Denied</div></div></div></div>
+      </section>
+
+      <section class="screen" id="mobile-screen-20">
+        <div class="screen-title"><h2>20. Mobile Auth and Access Audit Trail</h2><p>Immutable access timeline adapted to a scrolling mobile feed.</p></div>
+        <div class="phone"><div class="frame"><div class="topbar"><div class="title"><strong>Audit Trail</strong><span>Auth and claim timeline</span></div><div class="pill primary">Live</div></div><div class="stats"><div class="card"><small class="muted">Auth events</small><div style="font-size:1.5rem;font-weight:700;">41</div></div><div class="card"><small class="muted">Claim changes</small><div style="font-size:1.5rem;font-weight:700;">18</div></div></div><div class="card"><h4>Recent events</h4><div class="list"><div class="item"><span>10:02 Invite accepted</span><span class="pill info">Join</span></div><div class="item"><span>10:04 Passkey enrolled</span><span class="pill success">Auth</span></div><div class="item"><span>10:11 claim.ai.validate granted</span><span class="pill info">Claim</span></div><div class="item"><span>10:18 Step-up auth passed</span><span class="pill success">FIDO</span></div></div></div><div class="card"><h4>Action</h4><div class="btn primary" style="width:100%;">Export Evidence Pack</div></div><div class="nav"><div class="pill">Home</div><div class="pill primary">Timeline</div><div class="pill">Auth</div><div class="pill">Claims</div></div></div></div>
       </section>
     </div>
   </div>
