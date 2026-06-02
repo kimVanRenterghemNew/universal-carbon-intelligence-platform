@@ -1,93 +1,100 @@
-# User Management & Authentication
+# Platform Plan — Universal Carbon Intelligence Platform
 
-## 1. User Registration & Login
+## Product Goal
 
-- Users can register with name, email, and FIDO2/WebAuthn security key (up to 5 keys per user)
-- Login via email + FIDO key (WebAuthn prompt)
-- Users can add/remove keys in their profile (max 5)
-- Show list of registered keys, allow setting default, and removing keys
-- Error if user tries to add more than 5 keys
+Build a carbon intelligence platform that turns fragmented registry records, project documents, GIS layers, and market signals into one operational view for screening, monitoring, and decision support.
 
-## 2. User Profile/Settings
+## Product Pillars
 
-- View/update profile info
-- Manage FIDO keys (add, remove, set default)
-- View assigned rights/roles
-- Request additional rights (see below)
+### 1. Unified Data Ingestion
+- Connect to major carbon registries and public data sources.
+- Ingest project metadata, issuance, retirements, transfers, and linked files.
+- Track source health, sync status, and pipeline failures.
 
-## 3. Admin User Management
+### 2. AI-Assisted Interpretation
+- Extract structured metrics from long-form project documents.
+- Generate factual summaries, warnings, and missing-data prompts.
+- Keep humans in the loop for validation and correction.
 
-- List/search users
-- View user details (profile, registered keys, assigned rights)
-- Assign or revoke rights/roles per user
-- Disable/delete users
-- See pending rights requests from users
+### 3. Integrity Intelligence
+- Detect overlap risks, duplicate claims, delayed monitoring, and anomalous issuance patterns.
+- Score projects across transparency, permanence, delivery, monitoring, financial activity, and registry consistency.
+- Maintain evidence trails behind every flag and score.
 
-## 4. Rights & Permissions System
+### 4. Market Visibility
+- Surface price movement, liquidity, and buyer interest.
+- Expose project inventory and comparable market context.
+- Support due diligence workflows for buyers, banks, and brokers.
 
-- Define rights/roles (e.g. Viewer, Editor, Admin, Data Ingest, Integrity Reviewer, etc.)
-- Admin can assign one or more rights to each user
-- Users see their rights in profile
-- Users can request additional rights (with reason)
-- Admin sees and approves/denies requests
-- UI: Rights matrix (users x rights), checkboxes for assignment
-- Audit log for rights changes
+### 5. Portfolio and Decision Support
+- Track project watchlists and portfolios.
+- Alert users to integrity downgrades or new data gaps.
+- Export decision-ready summaries and reports.
 
-## 5. UX/UI Notes
+### 6. Platform Operations
+- Provide secure access control, audit trails, and role-based feature access.
+- Keep the interface accessible and usable across analyst, operator, and admin workflows.
+- Maintain observability across data pipelines, models, and user actions.
 
-- Clear “Add Security Key” and “Remove” buttons
-- Rights shown as badges or in a table
-- Request rights: button opens dialog to select right and enter reason
-- Admin: rights assignment via matrix or per-user detail page
-- All actions accessible and WCAG AA compliant
+## Target Users
 
----
-**FIDO2/WebAuthn**: Use browser-native WebAuthn APIs for registration and authentication. Store public keys per user, max 5. Show friendly error messages for unsupported browsers or device issues.
-# Platform Plan: Universal Carbon Intelligence
+- Carbon credit buyers and investors
+- Brokers and market analysts
+- Project developers and operators
+- Internal diligence and compliance teams
+- Banks, insurers, and public-sector programs
 
-## Agent Roles Needed
+## MVP Scope
 
-1. **Registry Ingestion Agent**
-   - Scrapes/ingests data from all major carbon registries, public documents, GIS, satellite, and transaction logs.
-2. **Document Extraction Agent**
-   - Extracts and parses data from PDFs, monitoring reports, verification docs, and project design documents.
-3. **Geospatial Analysis Agent**
-   - Detects land/parcel overlaps, polygon similarities, and conflicting claims using GIS and satellite data.
-4. **Integrity Detection Agent**
-   - Flags double counting, dormant projects, delayed monitoring, unrealistic claims, and inventory anomalies.
-5. **AI Interpretation Agent**
-   - Reads and standardizes project data, generates risk flags, project narratives, and comparable metrics.
-6. **Risk Scoring Agent**
-   - Assigns transparency, permanence, delivery, monitoring, financial, and registry consistency scores.
-7. **Market Analytics Agent**
-   - Tracks liquidity, pricing, sales activity, and generates market alerts and signals.
-8. **Automated Due Diligence Agent**
-   - Produces summaries, missing data alerts, and auditor flag predictions.
-9. **Predictive Failure Agent**
-   - Predicts project collapse, fire/drought/political risks, and underdelivery.
-10. **User/Project Onboarding Agent**
-    - Manages registry account linking, inventory exposure, and dynamic listing.
+### Workstream A: Data Foundation
+- Registry connector framework
+- Document upload and processing queue
+- GIS upload and geometry validation
+- Source health dashboard
 
-## Phased Plan
+### Workstream B: Analyst Experience
+- Main dashboard with alerts and activity
+- Project list and detail views
+- Map-based project exploration
+- AI extraction review screen
 
-### Phase 1: Foundation
-- Build Registry Ingestion Agent for major registries and public data
-- Develop Document Extraction Agent for PDFs and reports
-- Set up Geospatial Analysis Agent for overlap detection
+### Workstream C: Integrity Layer
+- Overlap detection
+- Issuance anomaly rules
+- Flag management view
+- Project risk scoring
 
-### Phase 2: Intelligence Layer
-- Implement AI Interpretation Agent for standardization and risk flagging
-- Add Integrity Detection Agent for anomaly and risk detection
-- Integrate Risk Scoring Agent for project ratings
+### Workstream D: Access and Governance
+- User profile and permissions
+- Audit log for critical actions
+- Accessibility baseline for all core screens
 
-### Phase 3: Market & User Layer
-- Launch Market Analytics Agent for liquidity and pricing
-- Enable User/Project Onboarding Agent for registry linking and listings
-- Deploy Automated Due Diligence and Predictive Failure Agents
+## Later Phase Scope
 
-### Phase 4: Business Model & Expansion
-- Integrate subscription, listing, and transaction fee models
-- Expand to smallholder/agroforestry focus and advanced analytics
+- Market-wide pricing and liquidity models
+- Registry account linking for developers
+- One-click due diligence packs
+- Predictive failure models
+- Pricing engine with biodiversity and SDG modifiers
+- Portfolio monitoring and notifications
 
----
-This plan matches the proposal and identifies the agent types needed for each layer. Each phase builds on the previous, ensuring a scalable and modular platform.
+## Delivery Sequence
+
+### Phase 1
+- Ingestion pipelines, storage model, and operator tooling
+
+### Phase 2
+- Document extraction, geospatial analysis, and analyst dashboards
+
+### Phase 3
+- Integrity scoring, watchlists, and due diligence workflows
+
+### Phase 4
+- Market intelligence, pricing, portfolio monitoring, and commercial expansion
+
+## Success Criteria
+
+- A user can understand the state of a project without manually reading all source material.
+- Operators can detect ingestion failures and data quality issues quickly.
+- Integrity flags are evidence-backed and traceable.
+- GitHub-hosted documentation stays readable, consistent, and presentation-ready.

@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Universal Carbon Intelligence Platform - Wireframes</title>
+  <style>
+    :root {
+      --base-100: #f5f7fb;
+      --base-content: #1f2937;
+      --primary: #0f766e;
+      --secondary: #2563eb;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --surface: rgba(255, 255, 255, 0.95);
+      --surface-strong: #ffffff;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Poppins, "Segoe UI", sans-serif;
+      color: var(--base-content);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(15, 118, 110, 0.18), transparent 28%),
+        linear-gradient(180deg, #fbfcfe 0%, var(--base-100) 100%);
+    }
+
+    .page {
+      width: min(1320px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
+    }
+
+    .hero {
+      padding: 28px 32px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(231, 244, 241, 0.96));
+      border: 1px solid rgba(216, 224, 235, 0.9);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 900px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .screen { margin: 0 0 40px; }
+
+    .screen-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .screen-title h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .screen-title p {
+      margin: 0;
+      color: #6b7280;
+    }
+
+    .window {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(216, 224, 235, 0.92);
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,249,253,0.98));
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 760px;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: rgba(255,255,255,0.9);
+      padding: 24px 18px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 22px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .menu {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .menu-item.active {
+      background: linear-gradient(90deg, rgba(15,118,110,0.9), rgba(37,99,235,0.9));
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .main {
+      padding: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(219, 234, 254, 0.8), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,247,251,0.98));
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .headline h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .headline p {
+      margin: 6px 0 0;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .btn-row,
+    .tabs,
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search,
+    .chip,
+    .tab,
+    .btn,
+    .badge,
+    .stat,
+    .panel,
+    .alert,
+    .list-row,
+    .mini,
+    .placeholder {
+      border-radius: var(--radius-md);
+    }
+
+    .search {
+      min-width: 240px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(216,224,235,0.92);
+      color: #6b7280;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    .chip,
+    .tab,
+    .btn,
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      background: var(--surface-strong);
+      color: var(--base-content);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .tab.active,
+    .btn.primary,
+    .chip.primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+    }
+
+    .btn.secondary { background: rgba(37,99,235,0.12); color: var(--secondary); }
+    .btn.ghost { background: rgba(255,255,255,0.72); color: #475569; border-color: rgba(216,224,235,0.9); }
+
+    .badge {
+      padding: 6px 10px;
+      font-size: 0.76rem;
+      box-shadow: none;
+      white-space: nowrap;
+    }
+
+    .badge.success { background: rgba(22,163,74,0.12); color: var(--success); }
+    .badge.warning { background: rgba(217,119,6,0.12); color: var(--warning); }
+    .badge.error { background: rgba(220,38,38,0.12); color: var(--error); }
+    .badge.info { background: rgba(37,99,235,0.12); color: var(--secondary); }
+    .badge.neutral { background: rgba(15,23,42,0.08); color: #334155; }
+
+    .stats,
+    .cards,
+    .layout,
+    .split,
+    .mini-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stats { grid-template-columns: repeat(4, 1fr); margin-bottom: 18px; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .layout { grid-template-columns: 1.7fr 1fr; }
+    .split { grid-template-columns: 1.6fr 1fr; }
+    .mini-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .stat,
+    .panel,
+    .alert,
+    .mini {
+      background: var(--surface);
+      border: 1px solid rgba(216,224,235,0.92);
+      padding: 18px;
+      box-shadow: 0 14px 28px rgba(15,23,42,0.06);
+    }
+
+    .stat-label,
+    .panel-subtle {
+      color: #64748b;
+      font-size: 0.82rem;
+    }
+
+    .stat-value {
+      margin-top: 10px;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .panel h4,
+    .mini h4 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(248,250,252,0.95);
+      border: 1px solid rgba(216,224,235,0.82);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px 10px;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(216,224,235,0.8);
+    }
+
+    .table th {
+      color: #64748b;
+      font-weight: 600;
+      background: rgba(239,244,250,0.92);
+    }
+
+    .placeholder {
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      border: 1px dashed rgba(15,118,110,0.28);
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(237,246,243,0.9));
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #64748b;
+      font-size: 0.84rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .shell,
+      .layout,
+      .cards,
+      .split,
+      .stats,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Universal Carbon Intelligence Platform</h1>
+      <p>Desktop handoff wireframes aligned to a daisyUI-style app shell. These stay intentionally full-screen because the complete application framing is useful for design, product, and engineering handoff.</p>
+    </section>
+
+    <section class="screen" id="screen-01">
+      <div class="screen-title"><h2>01. Dashboard Overview</h2><p>Analyst cockpit with KPIs, recent activity, quick actions, and watchlist context.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Carbon OS</div><div class="sidebar-card">Mission control for registry intelligence, project integrity, and market visibility.</div><div class="menu"><div class="menu-item active"><span>Dashboard</span><span class="badge neutral">Live</span></div><div class="menu-item"><span>Ingestion</span><span>18</span></div><div class="menu-item"><span>Integrity</span><span>27</span></div><div class="menu-item"><span>Market</span><span>9</span></div><div class="menu-item"><span>Portfolio</span><span>3</span></div></div><div class="sidebar-card">Workspace: Analyst Team<br>Theme: daisyUI-style light dashboard</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Operations Overview</h3><p>Daily view across carbon intelligence workflows and open risks.</p></div><div class="btn-row"><div class="search">Search projects, registries, or flags</div><div class="btn primary">Upload Source</div><div class="btn ghost">Export Brief</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Tracked Projects</div><div class="stat-value">412</div></div><div class="stat"><div class="stat-label">Open Integrity Flags</div><div class="stat-value">27</div></div><div class="stat"><div class="stat-label">Healthy Sources</div><div class="stat-value">18 / 20</div></div><div class="stat"><div class="stat-label">Market Exposure</div><div class="stat-value">EUR 18.4M</div></div></div><div class="layout"><div class="cards"><div class="panel"><h4>Recent Activity</h4><div class="list"><div class="list-row"><span>Verra synchronization completed</span><span class="badge success">Healthy</span></div><div class="list-row"><span>Blue Delta delay flagged</span><span class="badge warning">Review</span></div><div class="list-row"><span>ARR extraction validated</span><span class="badge info">AI parsed</span></div></div></div><div class="panel"><h4>Quick Actions</h4><div class="btn-row"><div class="btn primary">Open Flag Queue</div><div class="btn secondary">Review AI Output</div><div class="btn ghost">Share Summary</div></div></div><div class="panel"><h4>Upcoming Reviews</h4><div class="list"><div class="list-row"><span>Wetland X diligence refresh</span><span>14:00</span></div><div class="list-row"><span>Portfolio risk committee</span><span>16:30</span></div></div></div><div class="panel"><h4>Source Alerts</h4><div class="list"><div class="list-row"><span>Satellite feed latency</span><span class="badge warning">12 min</span></div><div class="list-row"><span>GIS upload mismatch</span><span class="badge error">2 errors</span></div></div></div></div><div class="panel"><h4>Watchlist</h4><div class="list"><div class="list-row"><span>Forest A</span><span class="badge error">Overlap</span></div><div class="list-row"><span>Blue Delta</span><span class="badge warning">Dormancy</span></div><div class="list-row"><span>Highland ARR</span><span class="badge success">Stable</span></div><div class="list-row"><span>Coastal Mangrove</span><span class="badge info">New volume</span></div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-02">
+      <div class="screen-title"><h2>02. Data Ingestion and Upload</h2><p>Intake flow for registry exports, documents, and GIS packages.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Ingestion</div><div class="menu"><div class="menu-item active"><span>Upload</span><span class="badge neutral">Now</span></div><div class="menu-item"><span>Queues</span><span>7</span></div><div class="menu-item"><span>Sources</span><span>20</span></div><div class="menu-item"><span>Logs</span><span>3</span></div></div><div class="sidebar-card">Supported inputs<br>CSV, GeoJSON, PDF, DOCX, XLSX, imagery manifests</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Data Intake</h3><p>Drag, validate, queue, and monitor structured or document sources.</p></div><div class="tabs"><div class="tab active">Upload</div><div class="tab">Queue</div><div class="tab">Errors</div></div></div><div class="split"><div class="panel"><h4>Dropzone</h4><div class="placeholder">Drop a registry export, document batch, or GIS package here. Validation starts immediately and routes the file to the correct pipeline.</div><div class="footer-note"><span>Auto-detect source type</span><span>CRS and schema pre-checks</span></div></div><div class="panel"><h4>Ingestion Summary</h4><div class="list"><div class="list-row"><span>Queued jobs</span><strong>7</strong></div><div class="list-row"><span>Processing now</span><strong>3</strong></div><div class="list-row"><span>Blocked</span><strong>1</strong></div></div></div></div><div class="panel"><h4>Queue Status</h4><table class="table"><thead><tr><th>Dataset</th><th>Status</th><th>Updated</th><th>Action</th></tr></thead><tbody><tr><td>verra-projects.csv</td><td><span class="badge success">Complete</span></td><td>2 min ago</td><td>View</td></tr><tr><td>monitoring-report.pdf</td><td><span class="badge warning">Processing</span></td><td>now</td><td>Pause</td></tr><tr><td>gis-layer.zip</td><td><span class="badge error">Error</span></td><td>8 min ago</td><td>Retry</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-03">
+      <div class="screen-title"><h2>03. Geospatial Map and Analysis</h2><p>Map-first view for polygons, overlap hotspots, and project selection.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Geo Analysis</div><div class="menu"><div class="menu-item active"><span>Map</span><span class="badge neutral">Active</span></div><div class="menu-item"><span>Layers</span><span>4</span></div><div class="menu-item"><span>Flags</span><span>12</span></div><div class="menu-item"><span>Saved Views</span><span>6</span></div></div><div class="sidebar-card">Focus region<br>Latin America ARR cluster</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Spatial Intelligence Map</h3><p>Project polygons, overlap hotspots, and NDVI signal layers.</p></div><div class="btn-row"><div class="search">Filter by project, registry, or region</div><div class="btn secondary">New Saved View</div></div></div><div class="layout"><div class="panel"><h4>Map Canvas</h4><div class="placeholder">Map canvas with project polygons, overlap clusters, registry boundaries, and NDVI layer toggles</div></div><div class="cards"><div class="panel"><h4>Layer Controls</h4><div class="list"><div class="list-row"><span>Projects</span><span class="badge success">On</span></div><div class="list-row"><span>Integrity Flags</span><span class="badge success">On</span></div><div class="list-row"><span>NDVI Overlay</span><span class="badge info">Preview</span></div><div class="list-row"><span>Asset Footprints</span><span class="badge neutral">Off</span></div></div></div><div class="panel"><h4>Selected Project</h4><div class="list"><div class="list-row"><span>Forest A</span><span class="badge warning">Medium risk</span></div><div class="list-row"><span>Registry</span><span>Verra</span></div><div class="list-row"><span>Area</span><span>14,200 ha</span></div></div></div><div class="panel"><h4>Nearby Alerts</h4><div class="list"><div class="list-row"><span>Polygon conflict</span><span class="badge error">2.1 km</span></div><div class="list-row"><span>Dormant neighbour</span><span class="badge warning">14 months</span></div></div></div><div class="panel"><h4>Visible Projects</h4><div class="panel-subtle">Forest A, Blue Delta, Highland ARR</div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-04">
+      <div class="screen-title"><h2>04. Document Extraction and AI Insights</h2><p>Evidence review with confidence, findings, and field validation.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">AI Review</div><div class="menu"><div class="menu-item active"><span>Extraction</span><span class="badge neutral">Ready</span></div><div class="menu-item"><span>Findings</span><span>5</span></div><div class="menu-item"><span>Corrections</span><span>2</span></div><div class="menu-item"><span>Source Trace</span><span>9</span></div></div><div class="sidebar-card">Document type<br>Monitoring report v3</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>AI Extraction Review</h3><p>Analyst-friendly validation of extracted metrics and model findings.</p></div><div class="tabs"><div class="tab active">Fields</div><div class="tab">Findings</div><div class="tab">Source Trace</div></div></div><div class="split"><div class="panel"><h4>Document Preview</h4><div class="placeholder">Structured document preview with paragraph anchors and highlighted evidence spans</div></div><div class="cards"><div class="panel"><h4>AI Findings</h4><div class="list"><div class="list-row"><span>High CO2 reduction signal</span><span class="badge success">Finding</span></div><div class="list-row"><span>Buffer adequacy unclear</span><span class="badge warning">Warning</span></div><div class="list-row"><span>Upload fresher imagery</span><span class="badge info">Suggestion</span></div></div></div><div class="panel"><h4>Review State</h4><div class="list"><div class="list-row"><span>Validated fields</span><strong>14</strong></div><div class="list-row"><span>Pending checks</span><strong>3</strong></div></div></div></div></div><div class="panel"><h4>Extracted Fields</h4><table class="table"><thead><tr><th>Field</th><th>Value</th><th>Confidence</th><th>Status</th></tr></thead><tbody><tr><td>Project area</td><td>14,200 ha</td><td>98%</td><td><span class="badge success">Validated</span></td></tr><tr><td>Leakage risk</td><td>Medium</td><td>90%</td><td><span class="badge warning">Pending</span></td></tr><tr><td>NDVI trend</td><td>Positive</td><td>95%</td><td><span class="badge success">Validated</span></td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-05">
+      <div class="screen-title"><h2>05. Market and Trading View</h2><p>Prices, comparables, and trading opportunities in one market desk.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Market Desk</div><div class="menu"><div class="menu-item active"><span>Overview</span><span class="badge neutral">Live</span></div><div class="menu-item"><span>Signals</span><span>9</span></div><div class="menu-item"><span>Comparables</span><span>24</span></div><div class="menu-item"><span>Deals</span><span>5</span></div></div><div class="sidebar-card">Focus basket<br>Nature-based spot market</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Carbon Market View</h3><p>Pricing, liquidity, and actionable trading opportunities.</p></div><div class="btn-row"><div class="btn primary">Create Watchlist</div><div class="btn ghost">Export Snapshot</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Average Price</div><div class="stat-value">EUR 24.80</div></div><div class="stat"><div class="stat-label">Daily Volume</div><div class="stat-value">10.4k</div></div><div class="stat"><div class="stat-label">Buyer Activity</div><div class="stat-value">Rising</div></div><div class="stat"><div class="stat-label">Spread</div><div class="stat-value">1.8</div></div></div><div class="split"><div class="panel"><h4>Trend Panel</h4><div class="placeholder">Area or line chart for price, volume, and liquidity movement</div></div><div class="panel"><h4>Trading Ladder</h4><div class="list"><div class="list-row"><span>Forest A</span><span class="badge success">Buy signal</span></div><div class="list-row"><span>Blue Delta</span><span class="badge warning">Watch</span></div><div class="list-row"><span>Highland ARR</span><span class="badge success">Buy signal</span></div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-06">
+      <div class="screen-title"><h2>06. User Profile and Settings</h2><p>Profile, integrations, and light personalization controls.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Profile</div><div class="menu"><div class="menu-item active"><span>Preferences</span><span class="badge neutral">User</span></div><div class="menu-item"><span>Access</span><span>3</span></div><div class="menu-item"><span>Integrations</span><span>2</span></div><div class="menu-item"><span>Notifications</span><span>On</span></div></div><div class="sidebar-card">Workspace role<br>Analyst</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>User Settings</h3><p>Profile, theme, integrations, and visible access summary.</p></div><div class="btn-row"><div class="btn primary">Save Changes</div><div class="btn ghost">Preview Theme</div></div></div><div class="cards"><div class="panel"><h4>Profile</h4><div class="list"><div class="list-row"><span>Name</span><span>Jane Doe</span></div><div class="list-row"><span>Organisation</span><span>Green Capital</span></div><div class="list-row"><span>Email</span><span>jane@carbon.io</span></div></div></div><div class="panel"><h4>Theme and Accessibility</h4><div class="chips"><div class="chip primary">Corporate Light</div><div class="chip">High Contrast</div><div class="chip">Comfort Scale</div></div></div><div class="panel"><h4>Integrations</h4><div class="list"><div class="list-row"><span>Registry Link</span><span class="badge success">Connected</span></div><div class="list-row"><span>API Token</span><span class="badge neutral">Masked</span></div><div class="list-row"><span>Webhook</span><span class="badge info">Configured</span></div></div></div><div class="panel"><h4>Feature Access</h4><div class="list"><div class="list-row"><span>Ingestion</span><span class="badge success">Granted</span></div><div class="list-row"><span>Market</span><span class="badge success">Granted</span></div><div class="list-row"><span>Admin</span><span class="badge warning">Request needed</span></div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-07">
+      <div class="screen-title"><h2>07. Registry Ingestion Dashboard</h2><p>Operational monitoring of source health and manual re-ingest actions.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Sources</div><div class="menu"><div class="menu-item active"><span>Health</span><span class="badge neutral">Ops</span></div><div class="menu-item"><span>Retries</span><span>3</span></div><div class="menu-item"><span>Schedules</span><span>12</span></div><div class="menu-item"><span>Logs</span><span>8</span></div></div><div class="sidebar-card">Alert threshold<br>2 failed runs</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Source Health Dashboard</h3><p>Operational visibility over registry connectors and batch pipelines.</p></div><div class="btn-row"><div class="btn primary">Trigger Re-sync</div><div class="btn ghost">Download Log</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Healthy Sources</div><div class="stat-value">18</div></div><div class="stat"><div class="stat-label">Warnings</div><div class="stat-value">2</div></div><div class="stat"><div class="stat-label">Failed Runs</div><div class="stat-value">1</div></div><div class="stat"><div class="stat-label">Avg Sync Time</div><div class="stat-value">3.4m</div></div></div><div class="panel"><h4>Connector Status</h4><table class="table"><thead><tr><th>Source</th><th>Status</th><th>Last Sync</th><th>Action</th></tr></thead><tbody><tr><td>Verra</td><td><span class="badge success">Healthy</span></td><td>2 min ago</td><td>Re-ingest</td></tr><tr><td>Gold Standard</td><td><span class="badge success">Healthy</span></td><td>5 min ago</td><td>Re-ingest</td></tr><tr><td>Satellite Feed</td><td><span class="badge warning">Warning</span></td><td>12 min ago</td><td>View Log</td></tr><tr><td>GIS Sync</td><td><span class="badge error">Failed</span></td><td>21 min ago</td><td>Retry</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-08">
+      <div class="screen-title"><h2>08. AI Interpretation Results</h2><p>Compact extracted metrics with confidence, source, and analyst note.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Interpretation</div><div class="menu"><div class="menu-item active"><span>Results</span><span class="badge neutral">AI</span></div><div class="menu-item"><span>Confidence</span><span>High</span></div><div class="menu-item"><span>Sources</span><span>14</span></div></div><div class="sidebar-card">Model profile<br>Structured extraction v2</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Extracted Metrics</h3><p>Human-readable output with confidence and source-backed interpretation.</p></div><div class="tabs"><div class="tab active">Metrics</div><div class="tab">Narrative</div><div class="tab">Trace</div></div></div><div class="panel"><h4>Metric Table</h4><table class="table"><thead><tr><th>Metric</th><th>Result</th><th>Confidence</th><th>Source</th></tr></thead><tbody><tr><td>Project Area</td><td>14,200 ha</td><td><span class="badge success">High</span></td><td>Monitoring report</td></tr><tr><td>Leakage Risk</td><td>Medium</td><td><span class="badge warning">Medium</span></td><td>Methodology annex</td></tr><tr><td>NDVI Trend</td><td>Positive</td><td><span class="badge success">High</span></td><td>Satellite summary</td></tr></tbody></table></div><div class="mini-grid"><div class="mini"><h4>Narrative Summary</h4>Project performance appears stable with positive vegetation signal and moderate leakage watchpoints.</div><div class="mini"><h4>Analyst Note</h4>Prioritize confirmation of buffer adequacy before external diligence export.</div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-09">
+      <div class="screen-title"><h2>09. Integrity Detection Center</h2><p>Central queue for overlaps, dormancy, and anomalies.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Integrity</div><div class="menu"><div class="menu-item active"><span>Flag Queue</span><span class="badge neutral">27</span></div><div class="menu-item"><span>Evidence</span><span>12</span></div><div class="menu-item"><span>Resolved</span><span>84</span></div></div><div class="sidebar-card">Default sort<br>Highest severity first</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Integrity Detection Center</h3><p>Evidence-led workflow for high-risk project investigation.</p></div><div class="btn-row"><div class="btn primary">Create Review Batch</div><div class="btn ghost">Filter Flags</div></div></div><div class="stats"><div class="stat"><div class="stat-label">High Severity</div><div class="stat-value">8</div></div><div class="stat"><div class="stat-label">Medium Severity</div><div class="stat-value">11</div></div><div class="stat"><div class="stat-label">Dormancy Cases</div><div class="stat-value">5</div></div><div class="stat"><div class="stat-label">Overlap Cases</div><div class="stat-value">3</div></div></div><div class="panel"><h4>Flag Queue</h4><table class="table"><thead><tr><th>Project</th><th>Flag</th><th>Severity</th><th>Status</th></tr></thead><tbody><tr><td>Forest A</td><td>Overlap</td><td><span class="badge error">High</span></td><td>New</td></tr><tr><td>Wetland X</td><td>Dormancy</td><td><span class="badge warning">Medium</span></td><td>Investigating</td></tr><tr><td>Delta Basin</td><td>Issuance anomaly</td><td><span class="badge warning">Medium</span></td><td>Queued</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-10">
+      <div class="screen-title"><h2>10. Dynamic Risk Scoring Overview</h2><p>Explainable score comparison across projects and dimensions.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Risk Lab</div><div class="menu"><div class="menu-item active"><span>Overview</span><span class="badge neutral">Scores</span></div><div class="menu-item"><span>Trends</span><span>12</span></div><div class="menu-item"><span>Compare</span><span>5</span></div></div><div class="sidebar-card">Composite model<br>Weighted six-dimension score</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Project Risk Scores</h3><p>Side-by-side scoring across transparency, permanence, delivery, and monitoring.</p></div><div class="tabs"><div class="tab active">Table</div><div class="tab">Radar</div><div class="tab">History</div></div></div><div class="panel"><h4>Score Grid</h4><table class="table"><thead><tr><th>Project</th><th>Transparency</th><th>Permanence</th><th>Delivery</th><th>Monitoring</th><th>Composite</th></tr></thead><tbody><tr><td>Forest A</td><td>8.5</td><td>7.2</td><td>6.9</td><td>8.0</td><td>7.6</td></tr><tr><td>Wetland X</td><td>6.0</td><td>5.5</td><td>4.2</td><td>6.8</td><td>5.7</td></tr><tr><td>Highland ARR</td><td>8.9</td><td>8.1</td><td>8.0</td><td>8.4</td><td>8.2</td></tr></tbody></table></div><div class="mini-grid"><div class="mini"><h4>Method Note</h4>Every score links back to evidence, missing data penalties, and last-update timestamp.</div><div class="mini"><h4>Trend Insight</h4>Forest A improved on transparency but dropped slightly on delivery confidence.</div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-11">
+      <div class="screen-title"><h2>11. Liquidity and Market Signals</h2><p>Market attention, demand shifts, and tradability alerts in one feed.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Liquidity</div><div class="menu"><div class="menu-item active"><span>Signals</span><span class="badge neutral">9</span></div><div class="menu-item"><span>Heatmap</span><span>4</span></div><div class="menu-item"><span>Watchlist</span><span>11</span></div></div><div class="sidebar-card">Signal engine<br>Volume, spread, buyer interest, inactivity</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Liquidity Signals</h3><p>Market attention, demand shifts, and tradability alerts in one feed.</p></div><div class="btn-row"><div class="btn primary">Add Watch Rule</div><div class="btn ghost">Mute Alert</div></div></div><div class="cards"><div class="panel"><h4>Live Alerts</h4><div class="list"><div class="list-row"><span>Forest A volume dropped 32%</span><span class="badge warning">Alert</span></div><div class="list-row"><span>Wetland X gained new buyer interest</span><span class="badge success">Positive</span></div><div class="list-row"><span>ARR basket spread widening</span><span class="badge error">Review</span></div></div></div><div class="panel"><h4>Signal Summary</h4><div class="list"><div class="list-row"><span>High liquidity assets</span><strong>8</strong></div><div class="list-row"><span>Stalled inventory</span><strong>13</strong></div><div class="list-row"><span>Buyer requests this week</span><strong>21</strong></div></div></div></div><div class="panel"><h4>Watched Assets</h4><table class="table"><thead><tr><th>Project</th><th>Liquidity</th><th>Buyer Signal</th></tr></thead><tbody><tr><td>Forest A</td><td>Medium</td><td>Neutral</td></tr><tr><td>Wetland X</td><td>Low</td><td>Improving</td></tr><tr><td>Highland ARR</td><td>High</td><td>Strong</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-12">
+      <div class="screen-title"><h2>12. Automated Due Diligence Summary</h2><p>One-screen investment review with facts, gaps, and recommendation.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Diligence</div><div class="menu"><div class="menu-item active"><span>Summary</span><span class="badge neutral">Ready</span></div><div class="menu-item"><span>Evidence</span><span>14</span></div><div class="menu-item"><span>Export</span><span>PDF</span></div></div><div class="sidebar-card">Report mode<br>Investor screening pack</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Automated Due Diligence</h3><p>One-screen view for screening risk, evidence, and action items.</p></div><div class="btn-row"><div class="btn primary">Export PDF</div><div class="btn secondary">Share Link</div><div class="btn ghost">Open Sources</div></div></div><div class="layout"><div class="cards"><div class="panel"><h4>Core Facts</h4><div class="list"><div class="list-row"><span>Integrity Score</span><strong>7.8</strong></div><div class="list-row"><span>Issuance vs Retirement</span><strong>400k / 40k</strong></div><div class="list-row"><span>Top Risks</span><strong>Overlap, dormancy</strong></div></div></div><div class="panel"><h4>Missing Data</h4><div class="list"><div class="list-row"><span>Recent field audit</span><span class="badge warning">Missing</span></div><div class="list-row"><span>Ownership refresh</span><span class="badge warning">Pending</span></div></div></div><div class="panel"><h4>Flags</h4><div class="list"><div class="list-row"><span>Overlap risk</span><span class="badge error">Open</span></div><div class="list-row"><span>Monitoring cycle</span><span class="badge warning">Delayed</span></div></div></div><div class="panel"><h4>Recommendation</h4><div class="list"><div class="list-row"><span>Decision</span><span class="badge info">Proceed with caution</span></div></div></div></div><div class="panel"><h4>AI Narrative</h4><div class="placeholder">Project shows a strong vegetation trend and credible data coverage, but delayed monitoring cycles and unresolved overlap evidence justify a guarded diligence posture before investment approval.</div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-13">
+      <div class="screen-title"><h2>13. Predictive Failure and MRV Companion</h2><p>Forward-looking risk view with clear remediation prompts.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Predictive</div><div class="menu"><div class="menu-item active"><span>Predictions</span><span class="badge neutral">Risk</span></div><div class="menu-item"><span>Checklist</span><span>6</span></div><div class="menu-item"><span>Actions</span><span>3</span></div></div><div class="sidebar-card">Model inputs<br>Climate, issuance, MRV cadence, audit history</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Predictive Failure and MRV Companion</h3><p>Operational foresight for delivery risk and pre-audit remediation.</p></div><div class="tabs"><div class="tab active">Predictions</div><div class="tab">Checklist</div><div class="tab">Mitigations</div></div></div><div class="cards"><div class="panel"><h4>Predictions</h4><div class="list"><div class="list-row"><span>Fire risk</span><span class="badge error">Elevated</span></div><div class="list-row"><span>Drought stress</span><span class="badge warning">Moderate</span></div><div class="list-row"><span>Underdelivery probability</span><span class="badge warning">Possible</span></div></div></div><div class="panel"><h4>MRV Checklist</h4><div class="list"><div class="list-row"><span>Monitoring overdue</span><span class="badge error">Open</span></div><div class="list-row"><span>Buffer adequacy review</span><span class="badge warning">Needed</span></div><div class="list-row"><span>Satellite refresh</span><span class="badge info">Suggested</span></div></div></div><div class="panel"><h4>Immediate Actions</h4><div class="btn-row"><div class="btn primary">Request New Monitoring Pack</div><div class="btn ghost">Escalate to Analyst</div></div></div><div class="panel"><h4>Confidence</h4><div class="list"><div class="list-row"><span>Prediction confidence</span><strong>74%</strong></div><div class="list-row"><span>Last model refresh</span><strong>Today</strong></div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-14">
+      <div class="screen-title"><h2>14. Pricing Engine and SDG or Biodiversity Overlay</h2><p>Fair-value logic with impact context and premium explanation.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Pricing</div><div class="menu"><div class="menu-item active"><span>Breakdown</span><span class="badge neutral">Live</span></div><div class="menu-item"><span>Impact</span><span>SDG</span></div><div class="menu-item"><span>History</span><span>12m</span></div></div><div class="sidebar-card">Model lens<br>Integrity + liquidity + co-benefits</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Pricing Engine</h3><p>Transparent fair-value logic with biodiversity and SDG modifiers.</p></div><div class="btn-row"><div class="btn primary">Compare Market Price</div><div class="btn ghost">Open History</div></div></div><div class="layout"><div class="panel"><h4>Price Factors</h4><table class="table"><thead><tr><th>Factor</th><th>Value</th><th>Impact</th></tr></thead><tbody><tr><td>Integrity</td><td>High</td><td>+1.4</td></tr><tr><td>Liquidity</td><td>Medium</td><td>-0.3</td></tr><tr><td>Biodiversity</td><td>Strong</td><td>+0.9</td></tr><tr><td>SDG Alignment</td><td>13 and 15</td><td>+0.6</td></tr></tbody></table></div><div class="cards"><div class="panel"><h4>Suggested Fair Value</h4><div class="stat-value">EUR 27.40</div><div class="panel-subtle">Premium driven by biodiversity and stable delivery outlook.</div></div><div class="panel"><h4>Impact Badges</h4><div class="chips"><div class="chip primary">SDG 13</div><div class="chip">SDG 15</div><div class="chip">Biodiversity+</div></div></div><div class="panel"><h4>Price Context</h4><div class="list"><div class="list-row"><span>Market midpoint</span><strong>24.80</strong></div><div class="list-row"><span>Premium vs market</span><strong>+10.5%</strong></div></div></div><div class="panel"><h4>History</h4><div class="placeholder">Historical price chart placeholder</div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-15">
+      <div class="screen-title"><h2>15. Portfolio Monitoring</h2><p>Holdings, concentration, and risk notes for buyers and banks.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Portfolio</div><div class="menu"><div class="menu-item active"><span>Overview</span><span class="badge neutral">3</span></div><div class="menu-item"><span>Risk</span><span>Alerts</span></div><div class="menu-item"><span>Diversification</span><span>Good</span></div><div class="menu-item"><span>Reports</span><span>12</span></div></div><div class="sidebar-card">Portfolio owner<br>Green Capital Buyer Desk</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Portfolio Monitoring</h3><p>Track held projects, aggregate risk, and diversification health.</p></div><div class="btn-row"><div class="btn primary">Export Portfolio Pack</div><div class="btn ghost">Configure Alerts</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Average Integrity Score</div><div class="stat-value">7.1</div></div><div class="stat"><div class="stat-label">Open Alerts</div><div class="stat-value">3</div></div><div class="stat"><div class="stat-label">Diversification Health</div><div class="stat-value">Balanced</div></div><div class="stat"><div class="stat-label">Watchlist Exposure</div><div class="stat-value">18%</div></div></div><div class="panel"><h4>Portfolio Overview</h4><table class="table"><thead><tr><th>Project</th><th>Risk</th><th>Alerts</th><th>Performance</th><th>Exposure</th></tr></thead><tbody><tr><td>Forest A</td><td>Medium</td><td>1</td><td>Stable</td><td>34%</td></tr><tr><td>Wetland X</td><td>High</td><td>2</td><td>Declining</td><td>18%</td></tr><tr><td>Highland ARR</td><td>Low</td><td>0</td><td>Improving</td><td>48%</td></tr></tbody></table></div><div class="mini-grid"><div class="mini"><h4>Diversification Insight</h4>Exposure remains concentrated in ARR. Add one wetland or blue carbon asset to reduce sector concentration.</div><div class="mini"><h4>Alert Note</h4>Two open alerts are tied to one project, suggesting risk is localized rather than systemic.</div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-16">
+      <div class="screen-title"><h2>16. Passkey or FIDO Sign-In</h2><p>Passwordless sign-in with device choice, recovery guidance, and workspace context.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Access</div><div class="menu"><div class="menu-item active"><span>Sign In</span><span class="badge neutral">FIDO</span></div><div class="menu-item"><span>Devices</span><span>2</span></div><div class="menu-item"><span>Recovery</span><span>Safe</span></div></div><div class="sidebar-card">Workspace access<br>Green Capital Analyst Hub</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Welcome Back</h3><p>Use a passkey, hardware key, or trusted device to continue without a password.</p></div><div class="btn-row"><div class="btn ghost">Need help?</div></div></div><div class="split"><div class="panel"><h4>Account Lookup</h4><div class="list"><div class="list-row"><span>Email</span><span>jane@carbon.io</span></div><div class="list-row"><span>Workspace</span><span>Analyst Team</span></div><div class="list-row"><span>Last device</span><span>Windows Hello</span></div></div><div class="btn-row" style="margin-top:14px"><div class="btn primary">Continue with Passkey</div><div class="btn secondary">Use Security Key</div></div></div><div class="cards"><div class="panel"><h4>Available Methods</h4><div class="list"><div class="list-row"><span>Passkey on this device</span><span class="badge success">Recommended</span></div><div class="list-row"><span>External FIDO key</span><span class="badge info">Available</span></div><div class="list-row"><span>Recovery review</span><span class="badge warning">Manual</span></div></div></div><div class="panel"><h4>Security Note</h4><div class="placeholder">Sensitive actions like trading approval or claim grants can require a fresh passkey check even during an active session.</div></div></div></div><div class="alert"><strong>Fallback policy</strong><br>No password reset flow exists. If all devices are lost, the user must go through audited recovery and re-enrollment.</div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-17">
+      <div class="screen-title"><h2>17. Workspace Onboarding</h2><p>Invite-led first-run experience that explains mission, scope, and allowed actions.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Onboarding</div><div class="menu"><div class="menu-item active"><span>Welcome</span><span class="badge neutral">Step 1</span></div><div class="menu-item"><span>Claims</span><span>Step 2</span></div><div class="menu-item"><span>Preferences</span><span>Step 3</span></div><div class="menu-item"><span>Finish</span><span>Step 4</span></div></div><div class="sidebar-card">Invite source<br>Portfolio Operations Lead</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Join Green Capital Analyst Workspace</h3><p>Orient the user before landing them inside ingestion, review, or market flows.</p></div><div class="btn-row"><div class="btn primary">Accept Workspace</div><div class="btn ghost">Decline</div></div></div><div class="layout"><div class="panel"><h4>Workspace Overview</h4><div class="list"><div class="list-row"><span>Purpose</span><span>Integrity and diligence operations</span></div><div class="list-row"><span>Data sensitivity</span><span class="badge warning">Restricted</span></div><div class="list-row"><span>Primary modules</span><span>Dashboard, Ingestion, Integrity, Diligence</span></div></div><div class="footer-note"><span>Every access grant is audited</span><span>Landing page depends on effective claims</span></div></div><div class="cards"><div class="panel"><h4>Initial Claims</h4><div class="list"><div class="list-row"><span>claim.ingestion.view</span><span class="badge success">Granted</span></div><div class="list-row"><span>claim.integrity.review</span><span class="badge success">Granted</span></div><div class="list-row"><span>claim.trading.execute</span><span class="badge neutral">Not granted</span></div></div></div><div class="panel"><h4>First Session Guidance</h4><div class="list"><div class="list-row"><span>Review open integrity queue</span><span>1</span></div><div class="list-row"><span>Check pending AI validations</span><span>3</span></div><div class="list-row"><span>Inspect due diligence pack</span><span>1</span></div></div></div></div></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-18">
+      <div class="screen-title"><h2>18. Claims Access Management</h2><p>Workspace-level claims view with effective permissions, inheritance, and justification.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Claims</div><div class="menu"><div class="menu-item active"><span>Effective Access</span><span class="badge neutral">12</span></div><div class="menu-item"><span>Inherited</span><span>4</span></div><div class="menu-item"><span>Requests</span><span>2</span></div><div class="menu-item"><span>Audit</span><span>Live</span></div></div><div class="sidebar-card">Scope<br>Workspace: Green Capital</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Claims Access Management</h3><p>Make sensitive capabilities explicit and reviewable, rather than hiding them inside broad roles.</p></div><div class="btn-row"><div class="btn primary">Grant Claims</div><div class="btn ghost">Review Audit</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Effective Claims</div><div class="stat-value">12</div></div><div class="stat"><div class="stat-label">Inherited</div><div class="stat-value">4</div></div><div class="stat"><div class="stat-label">Pending Requests</div><div class="stat-value">2</div></div><div class="stat"><div class="stat-label">Sensitive Claims</div><div class="stat-value">3</div></div></div><div class="panel"><h4>Claims Matrix</h4><table class="table"><thead><tr><th>Claim</th><th>Source</th><th>Scope</th><th>Status</th><th>Reason</th></tr></thead><tbody><tr><td>claim.ingestion.manage</td><td>Workspace bundle</td><td>Workspace</td><td><span class="badge success">Granted</span></td><td>Operations analyst</td></tr><tr><td>claim.ai.validate</td><td>Direct grant</td><td>Workspace</td><td><span class="badge success">Granted</span></td><td>Review ownership</td></tr><tr><td>claim.trading.execute</td><td>Not assigned</td><td>Workspace</td><td><span class="badge warning">Request needed</span></td><td>Restricted capability</td></tr><tr><td>claim.audit.view</td><td>Inherited</td><td>Platform</td><td><span class="badge info">Inherited</span></td><td>Compliance bundle</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-19">
+      <div class="screen-title"><h2>19. Claim Request and Approval</h2><p>User request flow and admin approval queue for sensitive permissions.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Requests</div><div class="menu"><div class="menu-item active"><span>Pending</span><span class="badge neutral">7</span></div><div class="menu-item"><span>Approved</span><span>12</span></div><div class="menu-item"><span>Denied</span><span>3</span></div></div><div class="sidebar-card">Approval rule<br>Trading claims need step-up auth</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Claim Request Queue</h3><p>Capture business reason, approver context, and strong-auth checkpoints around access changes.</p></div><div class="btn-row"><div class="btn primary">Approve Selected</div><div class="btn ghost">Bulk Deny</div></div></div><div class="split"><div class="panel"><h4>User Request</h4><div class="list"><div class="list-row"><span>User</span><span>Jane Doe</span></div><div class="list-row"><span>Requested claim</span><span>claim.trading.execute</span></div><div class="list-row"><span>Reason</span><span>Need to evaluate broker offers</span></div><div class="list-row"><span>Requested scope</span><span>Green Capital workspace</span></div></div></div><div class="cards"><div class="panel"><h4>Approver Checks</h4><div class="list"><div class="list-row"><span>Manager approval</span><span class="badge success">Received</span></div><div class="list-row"><span>Step-up auth</span><span class="badge warning">Required</span></div><div class="list-row"><span>Policy conflict</span><span class="badge neutral">None</span></div></div></div><div class="panel"><h4>Actions</h4><div class="btn-row"><div class="btn primary">Approve with Passkey</div><div class="btn secondary">Approve Temporarily</div><div class="btn ghost">Deny with Comment</div></div></div></div><div class="panel"><h4>Recent Decisions</h4><table class="table"><thead><tr><th>User</th><th>Claim</th><th>Outcome</th><th>Approver</th><th>When</th></tr></thead><tbody><tr><td>Omar K.</td><td>claim.market.view</td><td><span class="badge success">Approved</span></td><td>Maria L.</td><td>Today</td></tr><tr><td>Eva S.</td><td>claim.trading.approve</td><td><span class="badge error">Denied</span></td><td>Thomas R.</td><td>Yesterday</td></tr></tbody></table></div></main></div></div>
+    </section>
+
+    <section class="screen" id="screen-20">
+      <div class="screen-title"><h2>20. Auth and Access Audit Trail</h2><p>Immutable timeline for invites, passkeys, claims, approvals, and re-authentication.</p></div>
+      <div class="window"><div class="shell"><aside class="sidebar"><div class="logo">Audit</div><div class="menu"><div class="menu-item active"><span>Timeline</span><span class="badge neutral">Live</span></div><div class="menu-item"><span>Auth Events</span><span>41</span></div><div class="menu-item"><span>Claim Events</span><span>18</span></div><div class="menu-item"><span>Exports</span><span>2</span></div></div><div class="sidebar-card">Retention<br>Append-only, exportable</div></aside><main class="main"><div class="topbar"><div class="headline"><h3>Authentication and Access Audit Trail</h3><p>Everything from invite acceptance to claim escalation remains explainable and reviewable.</p></div><div class="btn-row"><div class="btn primary">Export Evidence Pack</div><div class="btn ghost">Filter Events</div></div></div><div class="stats"><div class="stat"><div class="stat-label">Auth Events</div><div class="stat-value">41</div></div><div class="stat"><div class="stat-label">Claim Changes</div><div class="stat-value">18</div></div><div class="stat"><div class="stat-label">Recovery Events</div><div class="stat-value">1</div></div><div class="stat"><div class="stat-label">Step-up Checks</div><div class="stat-value">6</div></div></div><div class="panel"><h4>Event Timeline</h4><table class="table"><thead><tr><th>Time</th><th>Actor</th><th>Event</th><th>Target</th><th>Evidence</th></tr></thead><tbody><tr><td>10:02</td><td>System</td><td>Invite accepted</td><td>Jane Doe</td><td>Workspace join record</td></tr><tr><td>10:04</td><td>Jane Doe</td><td>Passkey enrolled</td><td>Windows Hello</td><td>Device attestation</td></tr><tr><td>10:11</td><td>Maria L.</td><td>Claim granted</td><td>claim.ai.validate</td><td>Approval note</td></tr><tr><td>10:18</td><td>Thomas R.</td><td>Step-up auth passed</td><td>claim.trading.execute</td><td>FIDO assertion</td></tr></tbody></table></div></main></div></div>
+    </section>
+  </div>
+</body>
+</html>

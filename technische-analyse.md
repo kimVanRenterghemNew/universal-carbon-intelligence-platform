@@ -1,65 +1,109 @@
 # Technische Analyse
 
-## Architectuur & Componenten
+## Doel van de architectuur
 
-- **Frontend**: Moderne SPA (Single Page Application) met component-based UI (bijv. React, Vue, of Svelte)
-- **Backend**: Protobuf/gRPC API, met authenticatie endpoints (FIDO2/WebAuthn integratie)
-- **Database**: Relationeel (PostgreSQL/MySQL) of document-based (MongoDB) afhankelijk van datamodel
-- **User Management**: Eigen user store met FIDO2 key registratie, rechtenmatrix, en audit logging
-- **Admin Panel**: Beheer van gebruikers, rechten, en verzoeken via een beveiligde admin interface
-- **Security**: WebAuthn/FIDO2, HTTPS, RBAC (Role-Based Access Control), audit logs
-- **Accessibility**: WCAG 2.1 AA, keyboard navigation, screen reader support
+De platformarchitectuur moet vier dingen tegelijk goed doen:
 
-## Technologie Overwegingen
+- grote hoeveelheden heterogene carbon data binnenhalen
+- ongestructureerde documenten omzetten naar bruikbare datasets
+- integriteitsrisico's uitlegbaar detecteren
+- inzichten snel en toegankelijk presenteren aan analisten en operators
 
-- **Frontend**:
-    - **Vue 3 + Pinia** (https://pinia.vuejs.org/) als voorkeursstack.
-    - **Vite** als bundler/build tool (snel, moderne DX, top integratie met Vue/Tailwind).
-    - **Tailwind CSS** (https://tailwindcss.com/) als CSS framework, uitgebreid met **daisyUI** (https://daisyui.com/) voor kant-en-klare, aanpasbare componenten.
+## Voorgestelde architectuur
 
-- **Backend**:
-    - **Node.js** (Express/NestJS) als backend-platform.
-    - Database: **Neo4j** (graph database, ideaal voor relaties en rechtenstructuren).
-    - Alternatief: REST, GraphQL of gRPC API mogelijk.
+### Frontend
+- Moderne SPA of hybride webapp voor dashboards, projectdetail, kaarten en reviewflows
+- Goede keuze: React met Next.js of Vue 3 met Vite
+- UI-laag met Tailwind CSS + daisyUI component patterns, duidelijke statusweergave en responsieve layouts
 
-- **Hosting/Infra**:
-    - Voorlopig: gratis hosting vereist (bijv. Vercel, Netlify voor frontend; Cyclic, Render, Railway voor Node.js backend; Neo4j Aura Free voor database).
-    - Let op limieten van gratis hosting (slaapstand, cold starts, beperkte resources).
-- **Backend**:
-    - Node.js (Express/NestJS) of Laravel (PHP) voor snelle API ontwikkeling
-    - Alternatief: Python (FastAPI) of .NET Core voor grotere teams/enterprise
-    - Protobuf/gRPC API: Overweeg Protobuf/gRPC als alternatief voor REST/GraphQL voor efficiënte, strongly-typed communicatie tussen services (vooral bij microservices of polyglot stacks). Voordelen: snellere serialisatie, contract-first, multi-language support. Nadeel: minder geschikt voor directe browser-consumptie zonder extra tooling (gRPC-web of REST gateway nodig).
-- **Database**:
-    - PostgreSQL voor relationele data en sterke integriteit
-    - MongoDB voor flexibele document storage (bijv. rechtenmatrix als embedded docs)
-- **Authentication**:
-    - WebAuthn/FIDO2 via open source libraries (bijv. @simplewebauthn, webauthn.io)
-- **Hosting/Infra**:
-    - Cloud-native (Azure, AWS, Vercel) met CI/CD pipelines
-- **Testing**:
-    - Cypress/Playwright voor end-to-end tests, Jest/Vitest voor unit tests
+### Backend en services
+- API-laag voor gebruikers, projecten, flags, scores en exports
+- Identity- en accesslaag voor onboarding, FIDO of passkey login, sessies en claims-evaluatie
+- Asynchrone workers voor ingestie, OCR, extractie, scoring en notificaties
+- Eventgedreven koppeling tussen pipelines zodat nieuwe data automatisch vervolgstappen triggert
 
-## Vragen & Flow Issues
+### Datalaag
+- Document store voor projectdossiers, extractieresultaten, bronpayloads en analyst notes
+- Graph store als sterke kandidaat voor tradingrelaties, ownership chains, counterparty links en exposure-analyse
+- Beperkte operationele kern voor jobs, audit trails, notificaties en workflowstatus
+- Object storage voor documenten, exports en bronbestanden
+- Geospatiale opslag via PostGIS voor polygonen, overlaps en kaartqueries
+- Zoek- of indexlaag voor full-text document retrieval en snelle filters
 
-1. **User Flow**
-    - Hoe verloopt de fallback als FIDO key niet werkt of verloren is?
-    - Kunnen gebruikers meerdere rechten tegelijk aanvragen? ja. het zulle ntoegangen tot scremen zijn
-    - Wat gebeurt er als een admin een recht weigert? Krijgt de gebruiker feedback? lijkt me ene goed idee
-    - Is er een onboarding flow voor nieuwe gebruikers na registratie?
-    - Hoe worden rechtenwijzigingen geaudit en getoond aan admins?
-2. **Technologie**
-    - Gaan we voor een monorepo (frontend+backend samen) of gescheiden repos? voorlopig mono
-    - Welke WebAuthn library is het meest geschikt voor onze stack? die van bitwarden
-    - Welke database past het beste bij het rechtenmodel? 
-3. **Security & Privacy**
-    - Hoe lang bewaren we audit logs en gebruikersdata? 
-    - Hoe gaan we om met GDPR/AVG compliance? pii gevoelig inso word met een key op het user profiel beweaard
-    - Is er een recovery flow voor verloren FIDO keys?
+## Aanbevolen stack
 
-## Aanbevelingen
+### Applicatielaag
+- Frontend: React + Next.js of Vue 3 + Vite, met Tailwind CSS en daisyUI voor de componentlaag
+- Backend API: Node.js met NestJS of Python met FastAPI
+- Background jobs: queue workers voor ingestie en AI-pijplijnen
+- Authenticatie: FIDO of passkeys zonder traditioneel wachtwoordbeheer
+- Autorisatie: claims-based access control in plaats van enkel coarse-grained roles
 
-- Start met React (Next.js) + Node.js (Express/NestJS) + PostgreSQL voor maximale flexibiliteit en community support
-- Gebruik @simplewebauthn voor FIDO2 integratie
-- Bouw een eigen rechtenmatrix met audit logging
-- Implementeer CI/CD en automatische accessibility testing vanaf het begin ! pervekt werk maar test driven en laat de testen door een andere afent schrijven
-- Documenteer alle flows en edge cases in wireframes en user stories
+### Data en analyse
+- Document store als primaire opslagkandidaat voor project- en extractiedossiers
+- Graph database voor trading, ownership en relationship-heavy queries
+- Kleine relationele of transactionele sidecar voor workflowconsistentie, auditability en reporting wanneer nodig
+- PostGIS extensie voor geospatiale analyse
+- S3-compatibele object storage voor documenten en snapshots
+- Optionele zoeklaag zoals OpenSearch voor document- en projectfiltering
+
+### AI en extractie
+- OCR stap voor gescande documenten
+- LLM-gebaseerde extractie per documenttype
+- Strikte outputschema's zodat extracties valideerbaar en herhaalbaar blijven
+- Feedbackloop voor menselijke correcties op high-impact velden
+
+## Belangrijkste domeincomponenten
+
+### 1. Registry Ingestion Engine
+- Connector per registry of bron
+- Normalisatielaag naar één intern projectmodel
+- Sync-status, retries, rate limiting en foutregistratie
+
+### 2. Document Extraction Pipeline
+- Upload, classificatie, OCR, extractie, validatie en opslag
+- Confidence score per veld
+- Link tussen extracties en originele bronpassages
+
+### 3. Geospatial Analysis Engine
+- CRS-validatie en geometry cleanup
+- Overlapdetectie, buffering, proximity checks en visualisatie-output
+- Satelliet- of NDVI-koppeling per project of gebied
+
+### 4. Integrity Detection Layer
+- Regelgebaseerde flags voor monitoring delays, dormancy en issuance anomalies
+- Later uitbreidbaar met ML of anomaliedetectie
+- Altijd uitlegbaar: elke flag moet bewijs en brondata tonen
+
+### 5. Scoring and Market Intelligence
+- Herberekening van scores bij nieuwe data
+- Opslag van scorehistorie voor trends
+- Marktmodules voor prijs, volume, liquidity en comparables
+
+## Architectuurprincipes
+
+- Eerst een betrouwbare datafundering, daarna pas complexere AI-logica
+- Explainability boven magische black-box output
+- Idempotente pipelines zodat re-ingest veilig blijft
+- Toegankelijkheid als standaard in plaats van laatste laag bovenop de UI
+- Auditability voor datawijzigingen, overrides en modelcorrecties
+
+## Open ontwerpkeuzes
+
+1. Gaat de eerste versie multi-tenant zijn of starten we single-tenant?
+2. Welke registries krijgen prioriteit in de MVP?
+3. Hoeveel handmatige review is acceptabel bij documentextractie?
+4. Is near-real-time marktdata nodig of volstaat batchverwerking?
+5. Welke exports zijn commercieel het belangrijkst: PDF, CSV of API-first?
+6. Gaan we hybrid document + graph werken of echt graph-first?
+7. Welke claims zijn workspace-scoped en welke platform-breed?
+8. Start onboarding invite-only of self-serve met approval?
+9. Welke flows moeten echt mobile-first zijn in de MVP?
+
+## Concrete aanbevelingen
+
+- Gebruik een hybride richting als default: document-first voor dossiers en extracties, graph voor trading- en relatieanalyse, en een smalle operationele store waar transactiestabiliteit of rapportage dat vereist.
+- Gebruik aparte async workers voor ingestie, OCR en scoring; houd de API request/response laag dun.
+- Leg flags, scores en AI-extracties vast met herleidbare evidence references.
+- Ontwerp de UI rond analistenflows en voeg expliciet onboarding, claimsbeheer en passwordless identity toe.
+- Houd identity en permissions niet role-first maar claims-first, met audit log, recovery flow en workspace-context.
